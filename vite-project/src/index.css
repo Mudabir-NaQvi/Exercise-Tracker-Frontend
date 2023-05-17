@@ -14,17 +14,17 @@
 }
 @font-face {
   font-family: poppins-reguler;
-  src: url("./fonts/Poppins-Regular.ttf");
+  src: url("./Components/fonts/Poppins-Regular.ttf");
 }
 @font-face {
   font-family: poppins-medium;
-  src: url("./fonts/Poppins-Medium.ttf");
+  src: url("./Components/fonts/Poppins-Medium.ttf");
 }
 @font-face {
   font-family: poppins-bold;
-  src: url("./fonts/Poppins-Bold.ttf");
+  src: url("./Components/fonts/Poppins-Bold.ttf");
 }
 @font-face {
   font-family: poppins-semibold;
-  src: url("./fonts/Poppins-SemiBold.ttf");
+  src: url("./Components/fonts/Poppins-SemiBold.ttf");
 }
