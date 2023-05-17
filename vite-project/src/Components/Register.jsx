@@ -10,13 +10,19 @@ export default function Register() {
       <div className="register__containerRight">
         <h2>Register</h2>
         <form className="register__form">
-            <input type="text" name="firstName" placeholder="First Name"/>
-            <input type="text" name="lastName" placeholder="Last name"/>
-            <input type="email" name="email" placeholder="Email" required/>
-            <input type="password" name="password" placeholder="Password" required/>
-            <input type="submit" value="Submit" />
+          <input type="text" name="firstName" placeholder="First Name" />
+          <input type="text" name="lastName" placeholder="Last name" />
+          <input type="email" name="email" placeholder="Email" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <input type="submit" value="Submit" />
+          <p>Already have an account? login</p>
         </form>
       </div>
     </div>
-  )
+  );
 }
