@@ -1,0 +1,40 @@
+import React from "react";
+import "./LandingPage.css";
+import landingBgImage from "../images/landingBG.png";
+import landingCharacterImage from "../images/landingCharacter.png";
+import logoImage from "../images/logo.png";
+
+export default function LandingPage() {
+  return (
+    <div className="landing__container">
+      {/* individual container for all background images to set them behind */}
+      <div className="landing__sendBack">
+        <div className="landing__BgImage">
+          <img src={landingBgImage} alt="black themed background image" />
+        </div>
+        <div className="landing__characterImage">
+          <img src={landingCharacterImage} alt="running character" />
+        </div>
+      </div>
+      {/* individual container for all elements to bring them in front */}
+      <div className="landing__bringFront">
+        {/* main header  */}
+        <header className="landing__header">
+          <img src={logoImage} className="landing__logoImage" alt="logo" />
+          <button className="landing__loginBtn">Login</button>
+        </header>
+        {/* body section */}
+        <section className="landing__body">
+          <div>
+            <h1 className="landing__heading">Exercise Tracker</h1>
+            <br />
+            <h2 className="landing__subHeading">
+              The quick brown fox jumps over the lazy dog!
+            </h2>
+          </div>
+          <button className="landing__registerBtn">Register</button>
+        </section>
+      </div>
+    </div>
+  );
+}
