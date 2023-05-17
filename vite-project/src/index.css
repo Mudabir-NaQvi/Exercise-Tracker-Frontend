@@ -1,6 +1,6 @@
 :root {
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
-  font-family:poppins-reguler;
+  font-family: poppins-regular;
   --bg-dark:#040607;
   --bg-light:#eee;
   --primary-text-color:#000;
@@ -13,7 +13,7 @@
   box-sizing:border-box;
 }
 @font-face {
-  font-family: poppins-reguler;
+  font-family: poppins-regular;
   src: url("./Components/fonts/Poppins-Regular.ttf");
 }
 @font-face {
