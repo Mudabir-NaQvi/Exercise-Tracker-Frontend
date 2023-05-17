@@ -31,8 +31,13 @@
 
 .link {
     font-weight: lighter;
+    display: flex;
+        align-items: center;
 }
 
+.link>p {
+    margin-left: 20px;
+}
 .link__create,
 .link__home {
     padding-left: 10px;
