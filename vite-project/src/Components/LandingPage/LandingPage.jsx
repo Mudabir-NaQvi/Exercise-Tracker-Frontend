@@ -3,6 +3,7 @@ import "./LandingPage.css";
 import landingBgImage from "../images/landingBG.png";
 import landingCharacterImage from "../images/landingCharacter.png";
 import logoImage from "../images/logo.png";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   return (
@@ -21,7 +22,9 @@ export default function LandingPage() {
         {/* main header  */}
         <header className="landing__header">
           <img src={logoImage} className="landing__logoImage" alt="logo" />
-          <button className="landing__loginBtn">Login</button>
+          <Link to="/login">
+            <button className="landing__loginBtn">Login</button>
+          </Link>
         </header>
         {/* body section */}
         <section className="landing__body">
@@ -32,7 +35,9 @@ export default function LandingPage() {
               The quick brown fox jumps over the lazy dog!
             </h2>
           </div>
-          <button className="landing__registerBtn">Register</button>
+          <Link to="/register">
+            <button className="landing__registerBtn">Register</button>
+          </Link>
         </section>
       </div>
     </div>

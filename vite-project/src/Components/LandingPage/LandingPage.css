@@ -33,7 +33,7 @@
 .landing__bringFront {
   position: absolute;
   width: 98vw;
-  height: 95vh;
+  height: 94vh;
   top: 0;
   left: 0;
 }
@@ -41,7 +41,7 @@
 /* main header  */
 .landing__header {
   width: 100%;
-  padding: 0 1em;
+  padding: 0.5em 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -93,6 +93,15 @@
   background: var(--bg-dark);
   border-radius: 5px;
   padding: 0.7em 2.5em;
+}
+.landing__loginBtn:hover {
+  cursor: pointer;
+  box-shadow: 0px 1px 3px 3px;
+}
+
+.landing__registerBtn:hover {
+  cursor: pointer;
+  box-shadow: 0px 1px 3px 3px black;
 }
 
 @media screen and (max-width: 950px) {
