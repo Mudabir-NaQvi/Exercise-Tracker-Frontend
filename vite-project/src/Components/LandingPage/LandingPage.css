@@ -41,7 +41,7 @@
 /* main header  */
 .landing__header {
   width: 100%;
-  padding: 0.5em 1em;
+  padding: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -96,12 +96,16 @@
 }
 .landing__loginBtn:hover {
   cursor: pointer;
-  box-shadow: 0px 1px 3px 3px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.7);
+    background: white;
+    color: black;
 }
 
 .landing__registerBtn:hover {
   cursor: pointer;
-  box-shadow: 0px 1px 3px 3px black;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.7);
+    background: white;
+    color: black;
 }
 
 @media screen and (max-width: 950px) {

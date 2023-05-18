@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import loginImage from "../images/login.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +7,11 @@ import Cookies from "js-cookie";
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+
+  const token = Cookies.get("token");
+  if (token) {
+    navigate("/dashboard");
+  }
   const handleChange = (e) => {
     setLoginData((prevLoginData) => ({
       ...prevLoginData,
