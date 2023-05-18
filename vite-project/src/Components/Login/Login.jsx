@@ -4,6 +4,7 @@ import loginImage from "../images/login.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const navigate = useNavigate();

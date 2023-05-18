@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-import React from 'react'
+import React from "react";
 
 export default function ProtectedRoute(props) {
   const { component } = props;
@@ -12,9 +12,8 @@ export default function ProtectedRoute(props) {
   useEffect(() => {
     const token = Cookies.get("token");
     if (!token) {
-      navigate("/login");
+      navigate("/");
     }
   }, []);
   return <div>{component}</div>;
 }
-
