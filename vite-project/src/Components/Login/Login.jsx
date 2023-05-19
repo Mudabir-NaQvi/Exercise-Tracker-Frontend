@@ -28,6 +28,7 @@ export default function Login() {
         "http://localhost:5000/api/v1/auth/login",
         loginData
       );
+
       Cookies.set("token", response.data.token);
       navigate("/dashboard");
     } catch (error) {

@@ -27,19 +27,21 @@ export default function Register() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormErrors(validate(userData));
-    try {
-      axios.post("http://localhost:5000/api/v1/auth/register", userData);
 
+    try {
+      await axios.post("http://localhost:5000/api/v1/auth/register", userData);
       navigate("/login");
     } catch (error) {
+      let message = "Email already exists";
+      setFormErrors(validate(userData, message));
       console.log(error);
     }
   };
 
-  const validate = (formData) => {
+  const validate = (formData, message = "") => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
@@ -53,6 +55,8 @@ export default function Register() {
       errors.email = "email is required";
     } else if (!regex.test(userData.email)) {
       errors.email = "this email is not valid";
+    } else if (message) {
+      errors.email = message;
     }
     if (!formData.password) {
       errors.password = "password is required";
@@ -99,6 +103,9 @@ export default function Register() {
           />
           {formErrors.email && (
             <p style={{ color: "red" }}>{formErrors.email}</p>
+          )}
+          {formErrors.message && (
+            <p style={{ color: "red" }}>{formErrors.message}</p>
           )}
 
           <input
