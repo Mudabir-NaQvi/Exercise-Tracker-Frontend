@@ -3,11 +3,11 @@ import "./Dashboard.css";
 
 import Sidebar from "./Sidebar";
 import { Avatar } from "@mui/material";
-import running from "../images/running.png";
-import cycling from "../images/cycling.png";
-import swimming from "../images/swimming.png";
-import hiking from "../images/hiking.png";
-import walking from "../images/walking.png";
+import running from "../images/running-1.png";
+import cycling from "../images/cycling.jpg";
+import swimming from "../images/swimming-1.png";
+import hiking from "../images/hiking.jpg";
+import walking from "../images/walking.jpg";
 
 function Dashboard() {
   return (
@@ -32,14 +32,19 @@ function Dashboard() {
             style={{
               background: `url(${running})`,
               backgroundRepeat: "no-repeat",
-              backgroundPosition: "cover",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
             }}>
             <h2>Running</h2>
             <p className="activity__date">5th May, 2023</p>
           </div>
           <div
             className="card card__cycling"
-            style={{ background: `url(${cycling})` }}>
+            style={{
+              background: `url(${cycling})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}>
             <h2>Cycling</h2>
             <p className="activity__date">5th May, 2023</p>
           </div>
@@ -47,19 +52,31 @@ function Dashboard() {
         <div className="row dashboard__row3">
           <div
             className="card card__swimming"
-            style={{ background: `url(${swimming})` }}>
+            style={{
+              background: `url(${swimming})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}>
             <h2>Swimming</h2>
             <p className="activity__date">5th May, 2023</p>
           </div>
           <div
             className="card card__hiking"
-            style={{ background: `url(${hiking})` }}>
+            style={{
+              background: `url(${hiking})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}>
             <h2>Hiking</h2>
             <p className="activity__date">5th May, 2023</p>
           </div>
           <div
             className="card card__walking"
-            style={{ background: `url(${walking})` }}>
+            style={{
+              background: `url(${walking})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}>
             <h2>Walking</h2>
             <p className="activity__date">5th May, 2023</p>
           </div>
