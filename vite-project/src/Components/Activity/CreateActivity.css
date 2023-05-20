@@ -20,6 +20,7 @@ body {
 img {
   height: 100vh;
   width: 100%;
+  object-fit: cover;
 }
 /* Right contaier heading   */
 .right__create__activity__container {
@@ -89,8 +90,8 @@ img {
   .left__create__activity__container {
     display: flex;
   }
-  .left__create__activity__containe img {
-    height: 100vh;
+  .left__create__activity__container , img {
+    width: 100%;
   }
   .form__container {
     display: flex;

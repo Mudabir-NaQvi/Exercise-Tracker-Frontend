@@ -6,7 +6,7 @@ const CreateActivity = () => {
             <div className="main__container">
                 {/* left image container */}
                 <div className="left__create__activity__container">
-                    <img src="../src/Components/images/running-1.png" alt="create activity image" />
+                    <img src="../src/Components/images/running-1.png" alt="create activity image" className='activity__image'/>
                 </div>
                 {/* right form container */}
                 <div className="right__create__activity__container">

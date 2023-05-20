@@ -1,0 +1,131 @@
+/* font family */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+/* details main container */
+.main__container {
+  display: flex;
+  flex-direction: row;
+}
+/* side bar container */
+.sidebar__container {
+  flex: 10%;
+}
+/* details card */
+.details__card {
+  flex: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 30px 45px;
+}
+
+/* heading card */
+.detail__heading {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  color: #000000;
+}
+/* image card */
+.detail__image__container > img {
+  width: 572px;
+  height: 270px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+/* details container */
+.details__container {
+  background: #e8e8e8;
+  width: 1124px;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+/* details up card */
+.detail__up__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 14px;
+  margin-left: 10px;
+  margin-right: 18px;
+}
+/* In details up left details */
+.left__detail > p {
+  margin-bottom: 8px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 16px;
+}
+/* time in details */
+#left__time__details {
+  font-size: 14px;
+  color: #5f5f5f;
+  font-weight: normal;
+}
+/* In details UP right details icons */
+.right__details {
+  display: flex;
+  gap: 8px;
+}
+/* detail down container  */
+.detail__down__container {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+  margin: 15px;
+  margin-left: 10px;
+  margin-right: 18px;
+  font-style: normal;
+  font-size: 16px;
+}
+/*In detail down container duration detail  */
+.duration__detail {
+  font-weight: bold;
+  color: #9e9090;
+}
+/* media query */
+/*  mobile device */
+@media (max-width: 468px) {
+  .main__container {
+    display: flex;
+  }
+  .sidebar__container {
+    display:flex;
+    flex: 10%;
+    height: 579px;
+  }
+  .details__card {
+    flex: 100%;
+    margin-left: 10px;
+    width: 100%;
+    border: 1px solid green;
+  }
+  .detail__heading {
+    margin-bottom: 5px;
+  }
+  .detail__image__container > img {
+    width: 100%;
+    margin: 2px;
+    border: 1px solid red;
+  }
+  .details__container {
+    width: 100%;
+    margin: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

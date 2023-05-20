@@ -8,6 +8,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import CreateActivity from "../Activity/CreateActivity"
 import Cookies from "js-cookie";
+import CardsDetails from "../Details/CardsDetails";
 
 export default function Router() {
   return (
@@ -19,9 +20,10 @@ export default function Router() {
         />
 
         <Route path="/" element={<LandingPage />} />
-        <Route path="/activity" element={<CreateActivity />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/activity" element={<CreateActivity />} />
+        <Route path="/details" element={<CardsDetails/>}/>
       </Routes>
     </div>
   );
