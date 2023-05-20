@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 
 import Sidebar from "./Sidebar";
@@ -8,8 +8,24 @@ import cycling from "../images/cycling.jpg";
 import swimming from "../images/swimming-1.png";
 import hiking from "../images/hiking.jpg";
 import walking from "../images/walking.jpg";
+import avatar from "../images/avatar.png";
+import {useDispatch, useSelector} from 'react-redux';
+import axios from 'axios';
+import { setAllActivities } from "../../features/activitySlice";
 
 function Dashboard() {
+  // const [data, setData] = useState([])
+  // const dispatch = useDispatch();
+  // const activities = useSelector(state => state.activities.activities);
+  // useEffect(() => {
+  //   const fetchActivities = async() => {
+  //     const response = await axios.get('http://localhost:5000/api/v1/activity/');
+  //     const data = await response.data();
+  //     dispatch(setAllActivities(data))
+  //   }
+  //   fetchActivities();
+  // }, [])
+
   return (
     <div className="dashboard__container">
       {/* sidebar */}
@@ -22,11 +38,11 @@ function Dashboard() {
             <p className="header__date">5th May, 2023</p>
           </div>
           <div className="avatar__container">
-            <Avatar className="avatar" />
+            <Avatar className="avatar" src={avatar}/>
             <p className="username">Tariq Hussain</p>
           </div>
         </div>
-        <div className="row dashboard__row2">
+        <div className="dashboard__grid">
           <div
             className="card card__running"
             style={{
@@ -48,8 +64,6 @@ function Dashboard() {
             <h2>Cycling</h2>
             <p className="activity__date">5th May, 2023</p>
           </div>
-        </div>
-        <div className="row dashboard__row3">
           <div
             className="card card__swimming"
             style={{

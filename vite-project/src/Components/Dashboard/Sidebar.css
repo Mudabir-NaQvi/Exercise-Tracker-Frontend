@@ -7,16 +7,11 @@
     position: sticky;
     top: 0;
     max-width:400px;
-}
-
-
-
-.dashboard__sidebar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 30px 0 30px 40px;
 }
+
 
 .dashboard__sidebarTop {
     display: flex;
@@ -46,4 +41,35 @@
     color: #fff;
     text-decoration: none;
     letter-spacing: 1px;
+}
+
+@media only screen and (max-width:720px){
+    .link{
+        font-size:1rem;
+    }
+}
+
+@media only screen and (max-width:620px){
+    .link > p{  
+        display:none;
+    }
+
+    .dashboard__item{
+        justify-content:center;
+    }
+
+    .dashboard__sidebar{
+        flex:0.06;
+    }
+}
+
+@media only screen and (max-width:490px){
+    .avatar__container{
+        flex-direction:column;
+        margin-top:20px;
+    }
+
+    .username{
+        margin-top:5px;
+    }
 }
