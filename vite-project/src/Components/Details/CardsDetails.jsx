@@ -30,9 +30,9 @@ const CardsDetails = () => {
             <div className="detail__up__container">
               <div className="left__detail">
                 <p>13 May, 2023</p>
-                <p id="left__time__details">12:35 AM</p>
+                <p id="left__time__detail">12:35 AM</p>
               </div>
-              <div className="right__details">
+              <div className="right__detail">
                 <div className="edit__icon">
                   <EditIcon />
                 </div>
