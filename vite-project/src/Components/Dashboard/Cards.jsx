@@ -1,5 +1,12 @@
 import "./Cards.css";
-export default Cards = () => {
+import { Avatar } from "@mui/material";
+import running from "../images/running-1.png";
+import cycling from "../images/cycling.jpg";
+import swimming from "../images/swimming-1.png";
+import hiking from "../images/hiking.jpg";
+import walking from "../images/walking.jpg";
+import avatar from "../images/avatar.png";
+const Cards = () => {
     return (
         <>
         <div className="row__header dashboard__row1">
@@ -68,3 +75,5 @@ export default Cards = () => {
         </>
     )
 }
+
+export default Cards;
