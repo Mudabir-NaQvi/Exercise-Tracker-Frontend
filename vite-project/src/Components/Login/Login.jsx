@@ -38,10 +38,10 @@ export default function Login() {
         loginData
       );
 
-      Cookies.set("token", response.data.token);
+      Cookies.set("token", response.data.token, {samSite:"strict", httppOnly:true});
       navigate("/dashboard");
     } catch (error) {
-      const message = "Email or password in incorrect";
+      const message = "Email or password is incorrect";
       setFormErrors(validate(loginData, message))
       console.log(error);
     }

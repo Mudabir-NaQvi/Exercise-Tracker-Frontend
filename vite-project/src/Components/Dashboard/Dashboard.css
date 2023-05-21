@@ -9,7 +9,7 @@
   max-width:1200px;
   height:fit-content;
 }
-.row__header{
+/* .row__header{
     display:flex;
     padding:0px 30px;
     margin-top:30px;
@@ -70,6 +70,9 @@
     grid-column: span 2;
 }
 
+.activity > h3{
+    font-size:36px;
+}
 .activity__date{
     position:absolute;
     left:0;
@@ -100,4 +103,4 @@
         margin-top:5px;
         margin-bottom:5px;
     }
-}
+} */
