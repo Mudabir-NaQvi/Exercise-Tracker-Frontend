@@ -15,11 +15,8 @@ export default function App() {
     };
     fetchUsers();
   }, []);
-<<<<<<< HEAD
   // }, [users]);      //why dependency
 
-=======
->>>>>>> ca7aa0c4ae531917ed5f2f7429696c3b8695d41a
   return (
     <div>
       <Router />

@@ -5,9 +5,8 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import LandingPage from "../LandingPage/LandingPage";
 import Dashboard from "../Dashboard/Dashboard";
-import CreateActivity from "../Activity/CreateActivity"
+import CreateActivity from "../Activity/CreateActivity";
 import ProtectedRoute from "./ProtectedRoute";
-import CreateActivity from "../Activity/CreateActivity"
 import Cookies from "js-cookie";
 import CardsDetails from "../Details/CardsDetails";
 
@@ -27,8 +26,7 @@ export default function Router() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/activity" element={<CreateActivity />} />
-        <Route path="/details" element={<CardsDetails/>}/>
+        <Route path="/details" element={<CardsDetails />} />
       </Routes>
     </div>
   );

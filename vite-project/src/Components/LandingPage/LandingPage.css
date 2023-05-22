@@ -130,7 +130,7 @@
 @media screen and (max-width: 720px) {
   .landing__BgImage > img {
     position: relative;
-    right: -150px;
+    right: -350px;
   }
   .landing__loginBtn {
     color: #fff;
@@ -140,7 +140,7 @@
   .landing__characterImage {
     position: absolute;
     height: 75vh;
-    right: 0vw;
+    right: -10vw;
     top: 18vh;
   }
   .landing__characterImage > img {
@@ -174,13 +174,27 @@
 @media screen and (max-width: 500px) {
   .landing__BgImage > img {
     position: relative;
-    right: -150px;
+    right: -400px;
   }
   .landing__body {
     padding: 1rem;
   }
 
   .landing__characterImage {
-    right: -18vw;
+    right: -10vw;
+    top: 200px;
   }
+  .landing__characterImage > img {
+    height: 50vh;
+    object-fit: contain;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .landing__BgImage > img {
+    position: relative;
+    right: -450px;
+  }
+
 }
