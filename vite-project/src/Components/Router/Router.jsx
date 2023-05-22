@@ -5,6 +5,7 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import LandingPage from "../LandingPage/LandingPage";
 import Dashboard from "../Dashboard/Dashboard";
+import CreateActivity from "../Activity/CreateActivity"
 import ProtectedRoute from "./ProtectedRoute";
 import Cookies from "js-cookie";
 
@@ -15,6 +16,10 @@ export default function Router() {
         <Route
           path="/dashboard"
           element={<ProtectedRoute component={<Dashboard />} />}
+        />
+        <Route
+          path="/activity"
+          element={<ProtectedRoute component={<CreateActivity />} />}
         />
 
         <Route path="/" element={<LandingPage />} />

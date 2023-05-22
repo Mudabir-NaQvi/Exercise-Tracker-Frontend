@@ -14,7 +14,9 @@ export default function App() {
       dispatch(setUsers(users));
     };
     fetchUsers();
-  }, [users]);
+  }, []);
+  // }, [users]);      //why dependency
+
   return (
     <div>
       <Router />

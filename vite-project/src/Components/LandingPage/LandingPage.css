@@ -11,13 +11,13 @@
 }
 
 .landing__BgImage {
-  display: flex;
+  display: grid;
   justify-content: flex-end;
 }
 
 .landing__BgImage > img {
   height: 100vh;
-  position: relative;
+  /* object-fit: contain; */
 }
 
 .landing__characterImage {
@@ -33,7 +33,7 @@
 .landing__bringFront {
   position: absolute;
   width: 98vw;
-  height: 94vh;
+  height: 100vh;
   top: 0;
   left: 0;
 }
@@ -45,6 +45,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .landing__logoImage {
@@ -97,15 +98,15 @@
 .landing__loginBtn:hover {
   cursor: pointer;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.7);
-    background: white;
-    color: black;
+  background: white;
+  color: black;
 }
 
 .landing__registerBtn:hover {
   cursor: pointer;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.7);
-    background: white;
-    color: black;
+  background: white;
+  color: black;
 }
 
 @media screen and (max-width: 950px) {
@@ -114,17 +115,22 @@
   }
 
   .landing__characterImage {
-    right: -15vw;
+    right: -8vw;
   }
   .landing__BgImage > img {
-    right: -200px;
+    position: relative;
+    right: -180px;
+  }
+  .landing__loginBtn {
+    color: #fff;
+    background: var(--bg-dark);
   }
 }
 
 @media screen and (max-width: 720px) {
-  .landing__BgImage {
+  .landing__BgImage > img {
     position: relative;
-    right: -370px;
+    right: -150px;
   }
   .landing__loginBtn {
     color: #fff;
@@ -166,6 +172,10 @@
 }
 
 @media screen and (max-width: 500px) {
+  .landing__BgImage > img {
+    position: relative;
+    right: -150px;
+  }
   .landing__body {
     padding: 1rem;
   }

@@ -1,14 +1,15 @@
 import React from 'react'
 import "./CreateActivity.css"
+import Sidebar from '../Dashboard/Sidebar'
 const CreateActivity = () => {
     return (
         <div>
             <div className="main__container">
                 {/* side bar */}
-                <Sidebar />
+                {/* <Sidebar /> */}
                 {/* left image container */}
                 <div className="left__create__activity__container">
-                    <img src="../src/assets/running-1.png" alt="create activity image" />
+                    <img src="../src/Components/images/running-1.png" alt="create activity image" />
                 </div>
                 {/* right form container */}
                 <div className="right__create__activity__container">
