@@ -15,15 +15,8 @@ body {
 /* details main container */
 .main__container {
   display: flex;
-  flex-direction: row;
   height: fit-content;
   margin-bottom: 20px;
-}
-/* side bar container */
-.sidebar__container {
-  flex: 0.2;
-  position: fixed;
-  width: 20%;
 }
 /* details card */
 .details__card {

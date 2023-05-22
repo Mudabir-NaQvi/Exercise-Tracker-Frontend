@@ -8,10 +8,9 @@ const CardsDetails = () => {
   return (
     <div>
       <div className="main__container">
-        <div className="sidebar__container">
-          {/* side bar */}
-          <Sidebar />
-        </div>
+
+        <Sidebar />
+
         <div className="details__card">
           {/* heading */}
           <div className="detail__heading">
