@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 export default function Sidebar() {
   const navigate = useNavigate();
-
   const handleLogout = () => {
     Cookies.remove("token");
   };
