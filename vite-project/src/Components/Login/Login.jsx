@@ -4,17 +4,22 @@ import loginImage from "../images/login.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+<<<<<<< HEAD
 import { setCurrentUser } from "../../features/userSlice";
 import { useDispatch } from "react-redux";
+=======
+import { useDispatch, useSelector } from "react-redux";
+>>>>>>> 6f8638d332ab487afa5a37d1e62fd83ad88eb803
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-
   useEffect(() => {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
@@ -40,18 +45,25 @@ export default function Login() {
         "http://localhost:5000/api/v1/auth/login",
         loginData
       );
+<<<<<<< HEAD
       dispatch(setCurrentUser(response.data.user))
       Cookies.set("token", response.data.token, {samSite:"strict"});
+=======
+
+      Cookies.set("token", response.data.token, {
+        samSite: "strict",
+      });
+>>>>>>> 6f8638d332ab487afa5a37d1e62fd83ad88eb803
       navigate("/dashboard");
     } catch (error) {
       const message = "Email or password is incorrect";
-      setFormErrors(validate(loginData, message))
+      setFormErrors(validate(loginData, message));
       console.log(error);
     }
   };
 
   const validate = (loginData, message = "") => {
-    let errors = {}
+    let errors = {};
 
     if (!loginData.email) {
       errors.email = "Email is required";
@@ -65,7 +77,8 @@ export default function Login() {
       errors.message = message;
     }
     return errors;
-  }
+  };
+
   return (
     <div className="login__container">
       <div className="login__containerLeft">
@@ -73,9 +86,18 @@ export default function Login() {
       </div>
       <div className="login__containerRight">
         <h2>Login</h2>
-        {formErrors.message && <div className="alert" style={{ padding: "10px", marginTop: "20px", border: "1px solid red", borderRadius: "5px" }}>
-          <p style={{ color: "red" }}>{formErrors.message}</p>
-        </div>}
+        {formErrors.message && (
+          <div
+            className="alert"
+            style={{
+              padding: "10px",
+              marginTop: "20px",
+              border: "1px solid red",
+              borderRadius: "5px",
+            }}>
+            <p style={{ color: "red" }}>{formErrors.message}</p>
+          </div>
+        )}
         <form className="login__form">
           <input
             type="email"
@@ -84,7 +106,9 @@ export default function Login() {
             required
             onChange={handleChange}
           />
-          {formErrors.email && <p style={{ color: "red" }}>{formErrors.email}</p>}
+          {formErrors.email && (
+            <p style={{ color: "red" }}>{formErrors.email}</p>
+          )}
           <input
             type="password"
             name="password"
@@ -92,7 +116,9 @@ export default function Login() {
             required
             onChange={handleChange}
           />
-          {formErrors.password && <p style={{ color: "red" }}>{formErrors.password}</p>}
+          {formErrors.password && (
+            <p style={{ color: "red" }}>{formErrors.password}</p>
+          )}
           <input type="submit" value="Submit" onClick={handleSubmit} />
           <p>
             Do you have an account? <Link to="/register">Register</Link>

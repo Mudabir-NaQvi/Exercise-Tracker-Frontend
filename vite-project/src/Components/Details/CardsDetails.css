@@ -15,53 +15,55 @@ body {
 /* details main container */
 .main__container {
   display: flex;
-  height: fit-content;
+  height: 100vh;
+  flex-wrap: wrap;
   margin-bottom: 20px;
 }
+
 /* details card */
 .details__card {
   flex: 1;
   display: flex;
   flex-direction: column;
-  border:1px solid black;
-  padding:40px;
-  margin-left: 20%;
+  padding: 20px;
+  margin: 10px;
+  height: 100vh;
+  margin-left: 10px;
 }
 
 /* heading card */
-.detail__heading {
-  margin-bottom: 20px;
-  margin-left: 20px;
-  font-family: "Poppins", sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  font-style: normal;
-  color: #000000;
+.detail__heading>h1 {
+  margin-bottom: 10px;
+  margin-left: 15px;
+  font-family: poppins-regular;
+  font-size: 36px;
+  color: var(--primary-text-color)
 }
+
 /* image card */
-.detail__image__container{
-  max-width:500px;
-  height:300px;
-  margin:20px 0;
-  border:1px solid black;
+.detail__image__container {
+  max-width: 750px;
+  height: 350px;
+  margin: 20px 0;
 }
-.detail__image__container > img {
+
+.detail__image__container>img {
   width: 100%;
-  height:100%;
-  border-radius: 20px;
+  height: 100%;
+  border-radius: 10px;
   margin-bottom: 20px;
-  object-fit:cover;
+  object-fit: cover;
 }
+
 /* details container */
 .details__container {
-  background: #e8e8e8;
-  max-width:900px;
+  background: var(--bg-light);
+  max-width: 1200px;
   height: auto;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  width: 100%;
-
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
+
 /* details up card */
 .detail__up__container {
   display: flex;
@@ -71,37 +73,103 @@ body {
   margin-left: 10px;
   margin-right: 18px;
 }
+
 /* In details up left details */
-.left__detail > p {
+.left__detail>p {
+  font-family: poppins-regular;
   margin-bottom: 8px;
-  font-style: normal;
-  font-weight: bold;
   line-height: 16px;
 }
+
 /* time in details */
 #left__time__detail {
+  font-family: poppins-regular;
   font-size: 14px;
-  color: #5f5f5f;
+  color: var(--secondary-text-color);
   font-weight: normal;
 }
+
 /* In details UP right details icons */
 .right__detail {
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  cursor: pointer;
 }
+
+/* edit icon */
+.edit__icon {
+  color: green;
+}
+
+/* delete icon */
+.delete__icon {
+  color: rgb(212, 11, 11);
+}
+
 /* detail down container  */
 .detail__down__container {
   display: flex;
   justify-content: space-between;
-  font-family: "Roboto", sans-serif;
   margin: 15px;
-  margin-left: 10px;
-  margin-right: 18px;
-  font-style: normal;
+}
+/* p tag in details down container */
+.detail__down__container > p{
   font-size: 16px;
+  font-family: poppins-regular;
+  color: var(--primary-text-color);
 }
 /*In detail down container duration detail  */
 .duration__detail {
-  font-weight: bold;
-  color: #9e9090;
+  color: var(--secondary-text-color);
+  text-align: center;
+}
+
+/* media query */
+/* width 768 */
+@media (max-width: 768px) {
+  .main__container {
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  .details__card {
+    margin: 10px;
+    max-width: 100%;
+    height: fit-content;
+    padding: 10px;
+
+  }
+
+  .detail__heading {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+
+  .detail__image__container {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .details__container {
+    font-size: 12px;
+  }
+
+  .right__detail {
+    font-size: 10px;
+  }
+
+  .detail__down__container {
+    font-size: 12px;
+  }
+}
+
+/* width 1280px */
+@media (max-width: 1280px) {
+  .main__container {
+    flex-direction: row;
+  }
+
+  .details__card {
+    height: fit-content;
+  }
 }

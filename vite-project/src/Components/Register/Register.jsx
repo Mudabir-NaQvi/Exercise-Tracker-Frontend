@@ -43,7 +43,7 @@ export default function Register() {
 
   const validate = (formData, message = "") => {
     const errors = {};
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
     if (!formData.firstName) {
       errors.firstName = "first name is required";
@@ -53,7 +53,7 @@ export default function Register() {
     }
     if (!formData.email) {
       errors.email = "email is required";
-    } else if (!regex.test(userData.email)) {
+    } else if (!regexEmail.test(userData.email)) {
       errors.email = "this email is not valid";
     } else if (message) {
       errors.email = message;
