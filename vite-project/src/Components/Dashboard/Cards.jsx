@@ -15,6 +15,7 @@ const Cards = () => {
             <p className="header__date">5th May, 2023</p>
           </div>
           <div className="avatar__container">
+
             <Avatar className="avatar" src={avatar}/>
             <p className="username">Tariq Hussain</p>
           </div>

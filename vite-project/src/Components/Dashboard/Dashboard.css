@@ -3,12 +3,11 @@
 }
 
 .dashboard__main {
-  height: 100vh;
-  flex: 0.9;
-  width:100%;
-  max-width:1200px;
-  height:fit-content;
-}
+    flex: 0.9;
+    max-width:1200px;
+    height:fit-content;
+    margin:0 auto;
+  }
 /* .row__header{
     display:flex;
     padding:0px 30px;

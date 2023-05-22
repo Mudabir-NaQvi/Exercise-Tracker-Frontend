@@ -15,22 +15,23 @@ import { setAllActivities } from "../../features/activitySlice";
 import Cards from "./Cards";
 
 function Dashboard() {
-  const [data, setData] = useState([])
   const dispatch = useDispatch();
-  const activities = useSelector(state => state.activities.activities);
+  const activities = useSelector((state) => state.activities.activities);
   useEffect(() => {
-    const fetchActivities = async() => {
+    const fetchActivities = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/activity/');
-      const data = await response.data;
-      console.log(data);
-      dispatch(setAllActivities(data))
+        const response = await axios.get(
+          "http://localhost:5000/api/v1/activity/"
+        );
+        const data = await response.data;
+        console.log(data);
+        dispatch(setAllActivities(data));
       } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
       }
-    }
+    };
     fetchActivities();
-  }, [activities])
+  }, [activities]);
 
   return (
     <div className="dashboard__container">
@@ -38,8 +39,7 @@ function Dashboard() {
       <Sidebar />
       {/* main dashboard body */}
       <div className="dashboard__main">
-        <Cards/>
-        
+        <Cards />
       </div>
     </div>
   );
