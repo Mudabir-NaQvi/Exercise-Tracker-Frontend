@@ -9,7 +9,9 @@ const CardsDetails = () => {
     <div>
       <div className="main__container">
 
-        <Sidebar />
+          <div className="sidebar__container">
+          <Sidebar />
+          </div>
 
         <div className="details__card">
           {/* heading */}
@@ -33,10 +35,10 @@ const CardsDetails = () => {
               </div>
               <div className="right__detail">
                 <div className="edit__icon">
-                  <EditIcon />
+                  <EditIcon style={{width:"32", fontSize:"20px"}}/>
                 </div>
                 <div className="delete__icon">
-                  <DeleteIcon />
+                  <DeleteIcon style={{width:"32", fontSize:"20px"}}/>
                 </div>
               </div>
             </div>
@@ -54,14 +56,64 @@ const CardsDetails = () => {
             <div className="detail__up__container">
               <div className="left__detail">
                 <p>13 May, 2023</p>
-                <p id="left__time__details">12:35 AM</p>
+                <p id="left__time__detail">12:35 AM</p>
               </div>
-              <div className="right__details">
+              <div className="right__detail">
                 <div className="edit__icon">
-                  <EditIcon />
+                  <EditIcon style={{width:"32", fontSize:"20px"}}/>
                 </div>
                 <div className="delete__icon">
-                  <DeleteIcon />
+                  <DeleteIcon style={{width:"32", fontSize:"20px"}}/>
+                </div>
+              </div>
+            </div>
+            <div className="detail__down__container">
+              <div className="description__detail">
+                <p>The quick crazy brown fox jumps over the lazy dog</p>
+              </div>
+              <div className="duration__detail">
+                <p>4 Hours</p>
+              </div>
+            </div>
+          </div>
+          {/* 3rd card */}
+          <div className="details__container">
+            <div className="detail__up__container">
+              <div className="left__detail">
+                <p>13 May, 2023</p>
+                <p id="left__time__detail">12:35 AM</p>
+              </div>
+              <div className="right__detail">
+                <div className="edit__icon">
+                  <EditIcon style={{width:"32", fontSize:"20px"}}/>
+                </div>
+                <div className="delete__icon">
+                  <DeleteIcon style={{width:"32", fontSize:"20px"}}/>
+                </div>
+              </div>
+            </div>
+            <div className="detail__down__container">
+              <div className="description__detail">
+                <p>The quick crazy brown fox jumps over the lazy dog</p>
+              </div>
+              <div className="duration__detail">
+                <p>4 Hours</p>
+              </div>
+            </div>
+          </div>
+          {/* 4th card */}
+          <div className="details__container">
+            <div className="detail__up__container">
+              <div className="left__detail">
+                <p>13 May, 2023</p>
+                <p id="left__time__detail">12:35 AM</p>
+              </div>
+              <div className="right__detail">
+                <div className="edit__icon">
+                  <EditIcon style={{width:"32", fontSize:"20px"}}/>
+                </div>
+                <div className="delete__icon">
+                  <DeleteIcon style={{width:"32", fontSize:"20px"}}/>
                 </div>
               </div>
             </div>
