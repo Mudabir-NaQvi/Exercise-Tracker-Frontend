@@ -10,6 +10,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Cookies from "js-cookie";
 import CardsDetails from "../Details/CardsDetails";
 import Activity from "../Activity/Activity";
+import Details from "../Details/Details";
 export default function Router() {
   return (
     <div>
@@ -27,7 +28,7 @@ export default function Router() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/details" element={<CardsDetails />} />
+        <Route path="/details" element={<Details />} />
       </Routes>
     </div>
   );
