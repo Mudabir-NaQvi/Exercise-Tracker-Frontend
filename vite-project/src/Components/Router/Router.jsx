@@ -18,18 +18,15 @@ export default function Router() {
           path="/dashboard"
           element={<ProtectedRoute component={<Dashboard />} />}
         />
+
         <Route
-          path="/activity"
-          element={<ProtectedRoute component={<CreateActivity />} />}
+          path="/create-activity"
+          element={<ProtectedRoute component={<Activity />} />}
         />
 
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-<<<<<<< HEAD
-=======
-        <Route path="/create-activity" element={<Activity />} />
->>>>>>> 6f8638d332ab487afa5a37d1e62fd83ad88eb803
         <Route path="/details" element={<CardsDetails />} />
       </Routes>
     </div>

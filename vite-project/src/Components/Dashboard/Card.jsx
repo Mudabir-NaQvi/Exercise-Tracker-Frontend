@@ -3,7 +3,6 @@ import "./Card.css"
 import { useSelector } from "react-redux";
 
 export default function Card({recentActivity, images, index}) {
-    console.log(recentActivity);
   return (
     <div
       className="card "

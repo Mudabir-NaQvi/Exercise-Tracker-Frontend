@@ -4,12 +4,8 @@ import loginImage from "../images/login.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
-<<<<<<< HEAD
 import { setCurrentUser } from "../../features/userSlice";
-import { useDispatch } from "react-redux";
-=======
 import { useDispatch, useSelector } from "react-redux";
->>>>>>> 6f8638d332ab487afa5a37d1e62fd83ad88eb803
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -17,7 +13,6 @@ export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   useEffect(() => {
@@ -45,15 +40,8 @@ export default function Login() {
         "http://localhost:5000/api/v1/auth/login",
         loginData
       );
-<<<<<<< HEAD
       dispatch(setCurrentUser(response.data.user))
       Cookies.set("token", response.data.token, {samSite:"strict"});
-=======
-
-      Cookies.set("token", response.data.token, {
-        samSite: "strict",
-      });
->>>>>>> 6f8638d332ab487afa5a37d1e62fd83ad88eb803
       navigate("/dashboard");
     } catch (error) {
       const message = "Email or password is incorrect";

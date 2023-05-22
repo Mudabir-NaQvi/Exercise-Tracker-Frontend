@@ -15,8 +15,6 @@ const Cards = () => {
   let images = [running, cycling, swimming, hiking, walking];
   const recentActivities = useSelector((state) => state.activities.activities);
   const currentUser = useSelector(state => state.users.currentUser);
-  // console.log(recentActivities);
-  console.log("current User", currentUser);
 
   return (
     <>
