@@ -1,5 +1,4 @@
 /* font family */
-@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap");
 
 * {
   margin: 0;
@@ -20,6 +19,10 @@ body {
   margin-bottom: 20px;
 }
 
+.sidebar__container{
+  position:sticky;
+  top:0;
+}
 /* details card */
 .details__card {
   flex: 1;

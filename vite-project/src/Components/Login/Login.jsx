@@ -40,8 +40,8 @@ export default function Login() {
         "http://localhost:5000/api/v1/auth/login",
         loginData
       );
-      dispatch(setCurrentUser(response.data.user))
-      Cookies.set("token", response.data.token, {samSite:"strict"});
+      dispatch(setCurrentUser(response.data.firstName));
+      Cookies.set("token", response.data.token, { samSite: "strict" });
       navigate("/dashboard");
     } catch (error) {
       const message = "Email or password is incorrect";
@@ -82,7 +82,8 @@ export default function Login() {
               marginTop: "20px",
               border: "1px solid red",
               borderRadius: "5px",
-            }}>
+            }}
+          >
             <p style={{ color: "red" }}>{formErrors.message}</p>
           </div>
         )}
