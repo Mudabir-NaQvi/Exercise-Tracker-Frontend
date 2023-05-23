@@ -24,7 +24,7 @@ export default function Router() {
           element={<ProtectedRoute component={<Activity />} />}
         />
            <Route
-          path="/activity-details"
+          path="/activity-details/:type"
           element={<ProtectedRoute component={<Details />} />}
         />
 

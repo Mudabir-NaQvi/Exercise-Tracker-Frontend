@@ -45,5 +45,12 @@
       gap:10px;
       width:100%;
   }
+
+  .card__link{
+    text-decoration:none;
+  }
+  .card__link:first-child{
+    grid-column:span 2;
+  }
   
  

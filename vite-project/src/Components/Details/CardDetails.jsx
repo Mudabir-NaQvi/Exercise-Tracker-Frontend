@@ -4,25 +4,28 @@ import "./CardDetails.css";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const CardDetails = () => {
+const CardDetails = ({activityLog}) => {
+
+  const handleEdit = () => {
+
+  }
   return (
     <div className="details__cardContainer">
       <div className="details__cardTop">
         <div className="details__date">
-          <p className="date">12 May, 2023</p>
-          <p className="time">12:35 AM</p>
+          <p className="date">{new Date(activityLog.date).toDateString()}</p>
+          <p className="time">{new Date(activityLog.date).toLocaleTimeString()}</p>
         </div>
         <div className="detail__actions">
-          <EditIcon  className="details__action edit__icon"/>
+          <EditIcon  className="details__action edit__icon" onClick={handleEdit}/>
           <DeleteIcon className="details__action delete__icon"/>
         </div>
         </div>
         <div className="details__cardBottom">
           <p className="description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur,
-            at.
+            {activityLog.description}
           </p>
-          <p className="duration">4hr</p>
+          <p className="duration">{activityLog.duration}</p>
         </div>
       </div>
   );

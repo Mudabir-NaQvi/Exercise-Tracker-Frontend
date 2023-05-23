@@ -20,7 +20,7 @@ export default function Activity() {
           style={{ width: "40px", height: "40px" }}
           onClick={handleBackButton}
         />
-        <h2>Create Activity</h2>
+        <h2>Activity</h2>
         <form className="activity__form">
           <input type="text" name="type" placeholder="Activity type" required />
 

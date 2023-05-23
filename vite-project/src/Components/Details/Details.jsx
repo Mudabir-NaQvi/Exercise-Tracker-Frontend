@@ -1,28 +1,68 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import "./Details.css";
-import hiking from "../images/hiking.jpg";
-import CardDetails from './CardDetails';
-import Sidebar from '../Dashboard/Sidebar';
+import Hiking from "../images/hiking.jpg";
+import Swimming from "../images/swimming-1.png";
+import Walking from "../images/walking.jpg";
+import Cycling from "../images/cycling.jpg";
+import Running from "../images/running-1.png";
+import CardDetails from "./CardDetails";
+import Sidebar from "../Dashboard/Sidebar";
+import { useDispatch, useSelector } from "react-redux";
+import { setActivityLogs } from "../../features/activitySlice";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
+
 function Details() {
+  const dispatch = useDispatch();
+  const activityLogs = useSelector((state) => state.activities.activityLogs);
+  const activityType = useParams();
+  const images = {
+    Hiking,
+    Swimming,
+    Cycling,
+    Running,
+    Walking,
+  };
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/v1/activity/by-type?activityType=${activityType.type}`,
+          {
+            headers: {
+              Authorization: Cookies.get("token"),
+            },
+          }
+        );
+        const data = await response.data;
+        dispatch(setActivityLogs(data));
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchActivities();
+  }, []);
   return (
     <div className="details__container">
       <div className="sidebar__container">
         <Sidebar />
       </div>
       <div className="details__main">
-        <h2>Hiking</h2>
-        <img src={hiking} className="details__image" alt="hiking" />
+        <h2>{activityType.type}</h2>
+        <img
+          src={images[activityType.type]}
+          className="details__image"
+          alt="hiking"
+        />
         <div className="detail__cards">
-            <CardDetails/>
-            <CardDetails/>
-            <CardDetails/>
-            <CardDetails/>
-            <CardDetails/>
-        </div>
+          {activityLogs.map((activityLog, index) => {
+            return <CardDetails activityLog={activityLog} key={index} />;
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-export default Details
+export default Details;

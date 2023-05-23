@@ -8,14 +8,11 @@ import walking from "../images/walking.jpg";
 import avatar from "../images/avatar.png";
 import Card from "./Card";
 import { useSelector } from "react-redux";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const Cards = () => {
-  // const [currentUser, setcurrentUser] = useState("loading..");
   let images = [running, cycling, swimming, hiking, walking];
   const recentActivities = useSelector((state) => state.activities.activities);
   const currentUser = useSelector((state) => state.users.user);
-  console.log(currentUser);
   return (
     <>
       <div className="row__header dashboard__row1">
@@ -32,12 +29,13 @@ const Cards = () => {
       <div className="dashboard__grid">
         {recentActivities.map((recentActivity, index) => {
           return (
-            <Card
-              recentActivity={recentActivity}
-              index={index}
-              key={index}
-              images={images}
-            />
+            <Link to={`/activity-details/${recentActivity.activityType}`} key={index} className="card__link">
+              <Card
+                recentActivity={recentActivity}
+                index={index}
+                images={images}
+              />
+            </Link>
           );
         })}
       </div>

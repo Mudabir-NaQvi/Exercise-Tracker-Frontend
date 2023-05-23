@@ -1,8 +1,11 @@
-import React from "react";
-import "./Card.css"
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import "./Card.css";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function Card({recentActivity, images, index}) {
+export default function Card({ recentActivity, images, index }) {
+  const dispatch = useDispatch();
+  // const [currentActivity, setCurrentActivity] = useState(recentActivity);
+
   return (
     <div
       className="card "
@@ -14,7 +17,11 @@ export default function Card({recentActivity, images, index}) {
       }}
     >
       <h2>{recentActivity.activityType}</h2>
-      {recentActivity.lastDate && <p className="activity__date">{new Date(recentActivity.lastDate).toDateString()}</p>}
+      {recentActivity.lastDate && (
+        <p className="activity__date">
+          {new Date(recentActivity.lastDate).toDateString()}
+        </p>
+      )}
     </div>
   );
 }
