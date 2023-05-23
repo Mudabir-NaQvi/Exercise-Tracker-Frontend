@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   users: [],
-  currentUser: null,
+  currentUser: "loading..",
 };
 
 const userSlice = createSlice({
@@ -14,9 +14,10 @@ const userSlice = createSlice({
       state.users = action.payload;
     },
 
-    setCurrentUser: (state,action) => {
-      state.user = action.payload;
-    }
+    setCurrentUser: (state, action) => {
+      state.currentUser = action.payload;
+    },
+
   },
 });
 

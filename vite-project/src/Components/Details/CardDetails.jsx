@@ -1,10 +1,10 @@
 import React from "react";
 import Sidebar from "../Dashboard/Sidebar";
-import "./CardsDetails.css";
+import "./CardDetails.css";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const CardsDetails = () => {
+const CardDetails = () => {
   return (
     <div className="details__cardContainer">
       <div className="details__cardTop">
@@ -28,4 +28,4 @@ const CardsDetails = () => {
   );
 };
 
-export default CardsDetails;
+export default CardDetails;
