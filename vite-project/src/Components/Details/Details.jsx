@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Details.css";
 import hiking from "../images/hiking.jpg";
-import CardsDetails from './CardsDetails';
+import CardDetails from './CardDetails';
 import Sidebar from '../Dashboard/Sidebar';
 function Details() {
   return (
@@ -11,11 +11,11 @@ function Details() {
         <h2>Hiking</h2>
         <img src={hiking} className="details__image" alt="hiking"/>
         <div className="detail__cards">
-            <CardsDetails/>
-            <CardsDetails/>
-            <CardsDetails/>
-            <CardsDetails/>
-            <CardsDetails/>
+            <CardDetails/>
+            <CardDetails/>
+            <CardDetails/>
+            <CardDetails/>
+            <CardDetails/>
         </div>
         </div>
     </div>
