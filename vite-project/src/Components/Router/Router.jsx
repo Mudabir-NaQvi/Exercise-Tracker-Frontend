@@ -9,7 +9,11 @@ import CreateActivity from "../Activity/CreateActivity";
 import ProtectedRoute from "./ProtectedRoute";
 import Cookies from "js-cookie";
 import Activity from "../Activity/Activity";
+<<<<<<< HEAD
 import CardDetails from "../Details/CardDetails";
+=======
+import Details from "../Details/Details";
+>>>>>>> 39855e33d1120dd6f39128556e01984b3649f391
 export default function Router() {
   return (
     <div>
@@ -31,6 +35,10 @@ export default function Router() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+<<<<<<< HEAD
+=======
+        <Route path="/details" element={<Details />} />
+>>>>>>> 39855e33d1120dd6f39128556e01984b3649f391
       </Routes>
     </div>
   );

@@ -1,0 +1,27 @@
+
+.details__container{
+    display:flex;
+    gap:20px;
+    border:1px solid black;
+  }
+  
+  .details__main{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    justify-content: center;
+    margin-right:10px;
+ }
+  
+  .details__main h2{
+    font-size:40px;
+    padding:20px 10px;
+  }
+
+  .details__image{
+    object-fit:cover;
+    border-radius:15px;
+    width:100%;
+    max-width:500px;
+  }
+  
