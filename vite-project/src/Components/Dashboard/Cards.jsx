@@ -1,18 +1,24 @@
 import "./Cards.css";
 import { Avatar } from "@mui/material";
-import running from "../images/running-1.png";
-import cycling from "../images/cycling.jpg";
-import swimming from "../images/swimming-1.png";
-import hiking from "../images/hiking.jpg";
-import walking from "../images/walking.jpg";
+import Running from "../images/running-1.png";
+import Cycling from "../images/cycling.jpg";
+import Swimming from "../images/swimming-1.png";
+import Hiking from "../images/hiking.jpg";
+import Walking from "../images/walking.jpg";
 import avatar from "../images/avatar.png";
 import Card from "./Card";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const Cards = () => {
-  let images = [running, cycling, swimming, hiking, walking];
-  const recentActivities = useSelector((state) => state.activities.activities);
+  const images = {
+    Hiking,
+    Swimming,
+    Cycling,
+    Running,
+    Walking,
+  };
   const currentUser = useSelector((state) => state.users.user);
+  const recentActivities = useSelector(state => state.activities.activities)
   return (
     <>
       <div className="row__header dashboard__row1">

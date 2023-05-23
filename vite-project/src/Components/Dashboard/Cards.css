@@ -49,8 +49,6 @@
   .card__link{
     text-decoration:none;
   }
-  .card__link:first-child{
-    grid-column:span 2;
-  }
+ 
   
  

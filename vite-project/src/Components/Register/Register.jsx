@@ -15,9 +15,8 @@ export default function Register() {
   const [isSubmit, setIsSubmit] = useState(false);
 
   useEffect(() => {
-    console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(userData);
+     console.log(userData);
     }
   }, [formErrors]);
   const handleChange = (e) => {
@@ -30,15 +29,15 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormErrors(validate(userData));
-
-    try {
-      await axios.post("http://localhost:5000/api/v1/auth/register", userData);
-      navigate("/login");
-    } catch (error) {
-      let message = "Email already exists";
-      setFormErrors(validate(userData, message));
-      console.log(error);
-    }
+    console.log("inside");
+      try {
+        const response = await axios.post("http://localhost:5000/api/v1/auth/register", userData);
+        navigate('/login');        
+      } catch (error) {
+        let message = "Email already exists";
+        setFormErrors(validate(userData, message));
+        console.log(error);
+      }
   };
 
   const validate = (formData, message = "") => {
@@ -55,7 +54,7 @@ export default function Register() {
     if (!formData.lastName) {
       errors.lastName = "last name is required";
     } else if (!regexUsername.test(userData.lastName)) {
-      errors.lasName = "Invalid last name";
+      errors.lastName = "Invalid last name";
     }
     // email validation
     if (!formData.email) {

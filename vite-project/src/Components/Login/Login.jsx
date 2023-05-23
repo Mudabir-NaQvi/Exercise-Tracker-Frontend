@@ -16,15 +16,11 @@ export default function Login() {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   useEffect(() => {
-    console.log(formErrors);
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(userData);
+    const token = Cookies.get("token");
+    if (token) {
+      navigate("/dashboard");
     }
-  }, [formErrors]);
-  const token = Cookies.get("token");
-  if (token) {
-    navigate("/dashboard");
-  }
+  }, []);
   const handleChange = (e) => {
     setLoginData((prevLoginData) => ({
       ...prevLoginData,
