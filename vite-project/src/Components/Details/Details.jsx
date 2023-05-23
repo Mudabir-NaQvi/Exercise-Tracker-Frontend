@@ -6,10 +6,12 @@ import Sidebar from '../Dashboard/Sidebar';
 function Details() {
   return (
     <div className="details__container">
-        <Sidebar/>
-        <div className="details__main">
+      <div className="sidebar__container">
+        <Sidebar />
+      </div>
+      <div className="details__main">
         <h2>Hiking</h2>
-        <img src={hiking} className="details__image" alt="hiking"/>
+        <img src={hiking} className="details__image" alt="hiking" />
         <div className="detail__cards">
             <CardDetails/>
             <CardDetails/>
@@ -18,8 +20,9 @@ function Details() {
             <CardDetails/>
         </div>
         </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Details
