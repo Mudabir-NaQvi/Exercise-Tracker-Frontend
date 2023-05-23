@@ -1,5 +1,9 @@
 
+.sidebar__container{
+  width:20%;
+}
 .details__container{
+  flex:1;
     display:flex;
     gap:20px;
     border:1px solid black;
@@ -10,7 +14,7 @@
     flex-direction:column;
     width:100%;
     justify-content: center;
-    margin-right:10px;
+    margin-right:20px;
  }
   
   .details__main h2{
