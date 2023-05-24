@@ -17,19 +17,19 @@ const Cards = () => {
     Running,
     Walking,
   };
-  const currentUser = useSelector((state) => state.users.user);
+  const currentUser = useSelector((state) => state.users.currentUser);
   const recentActivities = useSelector(state => state.activities.activities)
   return (
     <>
       <div className="row__header dashboard__row1">
         <div className="activity">
-          l<h3>Tracking Activity</h3>
+          <h3>Tracking Activity</h3>
           <p className="header__date">5th May, 2023</p>
         </div>
         <div className="avatar__container">
           <Avatar className="avatar" src={avatar} />
           {/* <p className="username">{currentUser.firstName?currentUser.firstName:"Loading..."}</p> */}
-          <p className="username">{"Loading..."}</p>
+          <p className="username">{currentUser}</p>
         </div>
       </div>
       <div className="dashboard__grid">

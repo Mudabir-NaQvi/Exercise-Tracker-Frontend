@@ -12,8 +12,7 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const handleEdit = (e) => {
-    console.log(activityLog._id);
-    navigate(`create-activity/${activityLog._id}`);
+    navigate(`${activityLog._id}`);
   };
 
   const handleDelete = async () => {

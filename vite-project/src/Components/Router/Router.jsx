@@ -23,16 +23,21 @@ export default function Router() {
           path="/create-activity"
           element={<ProtectedRoute component={<Activity />} />}
         />
-     
+
         <Route
           path="/activity-details/:type"
           element={<ProtectedRoute component={<Details />} />}
+        />
+        <Route
+          index={true}
+          path="/activity-details/:type/:id"
+          element={<ProtectedRoute component={<EditActivity />} />}
         />
 
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/edit" element={<EditActivity/>}/>
+        <Route path="/edit" element={<EditActivity />} />
       </Routes>
     </div>
   );
