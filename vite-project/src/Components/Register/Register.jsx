@@ -16,7 +16,7 @@ export default function Register() {
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-     console.log(userData);
+      console.log(userData);
     }
   }, [formErrors]);
   const handleChange = (e) => {
@@ -29,15 +29,19 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormErrors(validate(userData));
-    console.log("inside");
+    if (Object.keys(validate(userData)).length === 0) {
       try {
-        const response = await axios.post("http://localhost:5000/api/v1/auth/register", userData);
-        navigate('/login');        
+        const response = await axios.post(
+          "http://localhost:5000/api/v1/auth/register",
+          userData
+        );
+        navigate("/login");
       } catch (error) {
         let message = "Email already exists";
         setFormErrors(validate(userData, message));
         console.log(error);
       }
+    }
   };
 
   const validate = (formData, message = "") => {
