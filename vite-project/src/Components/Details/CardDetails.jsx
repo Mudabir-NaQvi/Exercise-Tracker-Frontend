@@ -50,7 +50,6 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
             className="details__action edit__icon"
             onClick={handleEdit}
           />
-          <button> </button>
           <DeleteIcon
             className="details__action delete__icon"
             onClick={handleDelete}

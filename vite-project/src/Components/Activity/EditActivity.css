@@ -1,0 +1,78 @@
+/* Main container */
+.edit__container{
+  display: flex;
+}
+
+/* left container styles */
+.edit__containerLeft{
+  flex: 0.5;
+}
+.edit__containerLeft > img{
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Right container styles */
+.edit__containerRight{
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+/* edit form */
+.edit__form{
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  justify-content: center;
+  margin: 40px 0;
+}
+.edit__containerRight>h2 {
+  font-size: 36px;
+}
+
+.edit__form input,.edit__form select {
+  padding: 15px;
+  margin: 5px 0;
+  background: var(--bg-light);
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.edit__form>input[type="submit"] {
+  background: var(--bg-dark);
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.edit__form>input[type="submit"]:hover {
+  background: #111;
+}
+
+.back__icon{
+  position:absolute;
+  top:0;
+  left:0;
+  margin-top:20px;
+  margin-left:20px;
+  cursor:pointer;
+}
+/* media query */
+@media only screen and (max-width:720px) {
+  .edit__containerLeft {
+      flex: 0;
+  }
+
+  .edit__containerRight {
+      flex: 1;
+  }
+}
+
+::placeholder {
+  font-size: 14px;
+}

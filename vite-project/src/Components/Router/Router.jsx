@@ -5,11 +5,11 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import LandingPage from "../LandingPage/LandingPage";
 import Dashboard from "../Dashboard/Dashboard";
-import CreateActivity from "../Activity/CreateActivity";
 import ProtectedRoute from "./ProtectedRoute";
 import Cookies from "js-cookie";
 import Activity from "../Activity/Activity";
 import Details from "../Details/Details";
+import EditActivity from "../Activity/EditActivity";
 export default function Router() {
   return (
     <div>
@@ -32,6 +32,7 @@ export default function Router() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/edit" element={<EditActivity/>}/>
       </Routes>
     </div>
   );
