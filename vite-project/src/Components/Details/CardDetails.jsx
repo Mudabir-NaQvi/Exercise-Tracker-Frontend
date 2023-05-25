@@ -8,8 +8,10 @@ import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 
+
 const CardDetails = ({ activityLog, setShouldReload }) => {
   const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
   const handleEdit = (e) => {
     navigate(`${activityLog._id}`);
