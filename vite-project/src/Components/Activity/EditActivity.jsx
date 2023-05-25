@@ -7,7 +7,9 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
+import moment from "moment";
 
+moment.duration();
 const EditActivity = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -76,6 +78,14 @@ const EditActivity = () => {
     }
   };
 
+  const getDuration = () => {
+    const duration = String(activityData.duration);
+    const [hours, minutes] = duration.split(" ");
+    return (
+      String(hours).replace("h", "") * 60 + +String(minutes).replace("m", "")
+    );
+  };
+
   return (
     <div>
       <div className="edit__container">
@@ -121,7 +131,7 @@ const EditActivity = () => {
                 name="duration"
                 maxLength={3}
                 placeholder="Duration in minutes"
-                value={activityData.duration}
+                value={getDuration()}
                 onChange={handleChange}
               />
 
