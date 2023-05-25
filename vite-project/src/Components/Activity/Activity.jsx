@@ -78,6 +78,7 @@ export default function Activity() {
             name="description"
             placeholder="Description"
             required
+            maxLength={64}
             onChange={handleChange}
             />
           <input
@@ -93,6 +94,13 @@ export default function Activity() {
             name="date"
             placeholder="Date"
             onChange={handleChange}
+            min={new Date()
+              .toLocaleDateString("ja-JP", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+              })
+              .replace(/\//g, "-")}
           />
           {isLoading && <PulseLoader/>}
           <input type="submit" value={"Create"} />

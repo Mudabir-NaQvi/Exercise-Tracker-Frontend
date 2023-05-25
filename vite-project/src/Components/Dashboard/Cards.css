@@ -38,7 +38,7 @@
   }
   .dashboard__grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(290px, 1fr));
+      grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
       grid-template-rows:auto;
       object-fit:contain;
       padding:20px;
@@ -49,6 +49,7 @@
   .card__link{
     text-decoration:none;
   }
+
  
   
  
