@@ -46,11 +46,14 @@ cd Exercise-Tracker-Frontend/vite-project
 - React-spinners
   - For loading spinners
 
-![Landing]("User Interface\Landing.png")
-![Register]("User Interface\Landing.png")
-![Login]("User Interface\Landing.png")
-![Dashboard]("User Interface\Landing.png")
-![Activity Logs]("User Interface\Landing.png")
-![Create]("User Interface\Landing.png")
-![Edit]("User Interface\Landing.png")
-![Confirmation]("User Interface\Landing.png")
+
+# User Interface
+
+!["Landing"](https://github.com/Mudabir-NaQvi/Exercise-Tracker-Frontend/blob/main/User%20Interface/Landing.png "Landing Page")
+!["Register"](https://github.com/Mudabir-NaQvi/Exercise-Tracker-Frontend/blob/main/User%20Interface/Register.png)
+!["Login"](https://github.com/Mudabir-NaQvi/Exercise-Tracker-Frontend/blob/main/User%20Interface/Login.png)
+!["Dashboard"](https://github.com/Mudabir-NaQvi/Exercise-Tracker-Frontend/blob/main/User%20Interface/Dashboard.png)
+!["Activity Logs"](https://github.com/Mudabir-NaQvi/Exercise-Tracker-Frontend/blob/main/User%20Interface/Activity%20Logs.png)
+!["Create"](https://github.com/Mudabir-NaQvi/Exercise-Tracker-Frontend/blob/main/User%20Interface/Create.png)
+!["Edit"](https://github.com/Mudabir-NaQvi/Exercise-Tracker-Frontend/blob/main/User%20Interface/Edit.png)
+!["Confirmation"](https://github.com/Mudabir-NaQvi/Exercise-Tracker-Frontend/blob/main/User%20Interface/confirmation.png)
