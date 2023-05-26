@@ -23,7 +23,7 @@ export default function Card({ recentActivity, images, index }) {
             <p className="activity__date">
           {new Date(recentActivity.lastDate).toDateString()}
          </p>
-         <p className="activity__count">{recentActivity.count}</p>
+         {recentActivity.count !== 0 && <p className="activity__count">{recentActivity.count}</p>}
           </div>
       )}
     </div>
