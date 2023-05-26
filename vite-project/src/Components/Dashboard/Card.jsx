@@ -14,17 +14,17 @@ export default function Card({ recentActivity, images, index }) {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
-      }}  
+      }}
       name={recentActivity.activityType}
     >
       <h2>{recentActivity.activityType}</h2>
-      {recentActivity.lastDate && (
-          <div>
-            <p className="activity__date">
-          {new Date(recentActivity.lastDate).toDateString()}
-         </p>
-         {recentActivity.count !== 0 && <p className="activity__count">{recentActivity.count}</p>}
-          </div>
+      {recentActivity.lastDate && recentActivity.count !== 0 && (
+        <div>
+          <p className="activity__date">
+            {new Date(recentActivity.lastDate).toDateString()}
+          </p>
+          <p className="activity__count">{recentActivity.count}</p>
+        </div>
       )}
     </div>
   );

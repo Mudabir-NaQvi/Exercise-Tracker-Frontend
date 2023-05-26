@@ -6,15 +6,15 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { setCurrentUser } from "../../features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { PulseLoader } from "react-spinners";
 
 export default function Login() {
   const dispatch = useDispatch();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
   useEffect(() => {
     const token = Cookies.get("token");
     if (token) {
@@ -30,6 +30,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     setFormErrors(validate(loginData));
     try {
       const response = await axios.post(
@@ -43,6 +44,8 @@ export default function Login() {
       const message = "Email or password is incorrect";
       setFormErrors(validate(loginData, message));
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -83,32 +86,37 @@ export default function Login() {
             <p style={{ color: "red" }}>{formErrors.message}</p>
           </div>
         )}
-        <form className="login__form">
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-            onChange={handleChange}
-          />
-          {formErrors.email && (
-            <p style={{ color: "red" }}>{formErrors.email}</p>
-          )}
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-            onChange={handleChange}
-          />
-          {formErrors.password && (
-            <p style={{ color: "red" }}>{formErrors.password}</p>
-          )}
-          <input type="submit" value="Submit" onClick={handleSubmit} />
-          <p>
-            Do you have an account? <Link to="/register">Register</Link>
-          </p>
-        </form>
+
+        {isLoading ? (
+          <PulseLoader />
+        ) : (
+          <form className="login__form">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              onChange={handleChange}
+            />
+            {formErrors.email && (
+              <p style={{ color: "red" }}>{formErrors.email}</p>
+            )}
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              onChange={handleChange}
+            />
+            {formErrors.password && (
+              <p style={{ color: "red" }}>{formErrors.password}</p>
+            )}
+            <input type="submit" value="Submit" onClick={handleSubmit} />
+            <p>
+              Do you have an account? <Link to="/register">Register</Link>
+            </p>
+          </form>
+        )}
       </div>
     </div>
   );
