@@ -47,10 +47,10 @@ cd Exercise-Tracker-Frontend/vite-project
   - For loading spinners
 
 ![Landing]("User Interface\Landing.png")
-![Register]("User Interface\Landing.png")
-![Login]("User Interface\Landing.png")
-![Dashboard]("User Interface\Landing.png")
-![Activity Logs]("User Interface\Landing.png")
-![Create]("User Interface\Landing.png")
-![Edit]("User Interface\Landing.png")
-![Confirmation]("User Interface\Landing.png")
+![Register]("User Interface\Register.png")
+![Login]("User Interface\Login.png")
+![Dashboard]("User Interface\Dashboard.png")
+![Activity Logs]("User Interface\Activity Logs.png")
+![Create]("User Interface\Create.png")
+![Edit]("User Interface\Edit.png")
+![Confirmation]("User Interface\Confirmation.png")
