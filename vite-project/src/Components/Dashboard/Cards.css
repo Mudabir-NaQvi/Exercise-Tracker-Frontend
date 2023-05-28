@@ -44,12 +44,16 @@
       padding:20px;
       gap:10px;
       width:100%;
+      height:fit-content;
   }
 
   .card__link{
     text-decoration:none;
   }
 
+
+
+  
  
   
  

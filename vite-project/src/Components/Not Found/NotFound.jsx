@@ -1,9 +1,8 @@
 import React from 'react'
-
+import notfound from '../images/404.jpg';
 function NotFound() {
   return (
-    <div>
-      <h1 style={{display:"flex",justifyContent:"center",alignItems:"center",height:'100vh', fontSize:"3rem"}}>404 Page Not Found</h1>
+    <div style={{background:`url(${notfound})`,backgroundSize:"contain", height:"100vh", objectFit:"cover",backgroundPosition:"center",width:'100%'}}>
     </div>
   )
 }

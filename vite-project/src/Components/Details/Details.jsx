@@ -76,7 +76,7 @@ function Details() {
                   />
                 );
               })
-            : <h1 style={{padding:"10px"}}>Activity Log is Empty</h1>}
+            : <h2 style={{padding:"10px"}}>Activity Log is Empty</h2>}
         </div>
         {isLoading && <PulseLoader />}
       </div>

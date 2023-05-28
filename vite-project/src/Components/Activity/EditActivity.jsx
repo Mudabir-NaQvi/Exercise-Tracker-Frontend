@@ -13,6 +13,7 @@ moment.duration();
 const EditActivity = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const [activityData, setActivityData] = useState({});
   const activityTypes = useSelector((state) => state.activities.activities);
   const { id } = useParams();
@@ -23,6 +24,7 @@ const EditActivity = () => {
     const fetchActivity = async () => {
       try {
         setIsLoading(true);
+        // get specific activity
         const response = await axios.get(
           `http://localhost:5000/api/v1/activity/${id}`,
           {
@@ -54,16 +56,18 @@ const EditActivity = () => {
   };
 
   const handleChange = (e) => {
-    setActivityData({ ...activityData, [e.target.name]: e.target.value });
+    setActivityData((prevActivityData) => ({ ...prevActivityData, [e.target.name]: e.target.value }));
   };
 
+  // update data
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const {duration} = activityData;
     try {
       setIsLoading(true);
-      const response = await axios.put(
+      await axios.put(
         `http://localhost:5000/api/v1/activity/${id}`,
-        activityData,
+        {...activityData, duration: getDuration()},
         {
           headers: {
             Authorization: Cookies.get("token"),
@@ -72,18 +76,19 @@ const EditActivity = () => {
       );
       navigate("/dashboard");
     } catch (error) {
+      setError("Cannot set previous date and time")
       console.log(error);
     } finally {
       setIsLoading(false);
     }
   };
 
+  // get duration in minutes from 3h 20m format
   const getDuration = () => {
     const duration = String(activityData.duration);
     const [hours, minutes] = duration.split(" ");
-    return (
-      String(hours).replace("h", "") * 60 + +String(minutes).replace("m", "")
-    );
+    const result = parseInt(String(hours).replace("h", "") + +String(minutes).replace("m", ""))
+    return result;
   };
 
   return (
@@ -127,28 +132,23 @@ const EditActivity = () => {
                 onChange={handleChange}
               />
               <input
-                type="text"
+                type="number"
                 name="duration"
-                maxLength={3}
+                min={1}
+                max={500}
                 placeholder="Duration in minutes"
                 value={getDuration()}
                 onChange={handleChange}
               />
 
               <input
-                type="date"
+                type="datetime-local"
                 name="date"
                 placeholder="Date"
-                value={getDate()}
                 onChange={handleChange}
-                min={new Date()
-                  .toLocaleDateString("ja-JP", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                  })
-                  .replace(/\//g, "-")}
+                min={new Date().toISOString().slice(0, 16)}
               />
+              {error && <p style={{color:"red"}}>{error}</p>}
               <input type="submit" value="Update" />
             </form>
           )}
