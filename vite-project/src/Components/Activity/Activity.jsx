@@ -12,7 +12,7 @@ import moment from "moment";
 export default function Activity() {
   const [activityData, setActivityData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [activityErrors, setActivityErrors] = useState({});
   const activityTypes = useSelector((state) => state.activities.activities);
   const navigate = useNavigate();
   const handleBackButton = () => {
@@ -28,18 +28,46 @@ export default function Activity() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setActivityErrors(validate(activityData));
     console.log(activityData);
     try {
       setIsLoading(true);
-      await axios.post("activity/create", activityData);
-      navigate("/dashboard");
+      const response = await axios.post(
+        `http://localhost:5000/api/v1/activity/create`,
+        activityData,
+        {
+          headers: {
+            Authorization: Cookies.get("token"),
+          },
+        }
+      );
+      navigate('/dashboard');
     } catch (error) {
-      setError("Cannot set previous date and time");
+      setError("Cannot set previous date and time")
       console.log(error);
-    } finally {
+    }finally{
       setIsLoading(false);
     }
+  };
+
+  const validate = (activityData, message = "") => {
+    const errors = {};
+
+    if (!activityData.activityType) {
+      errors.activityType = "activity type is required";
+    }
+    if (!activityData.description) {
+      errors.description = "description is required";
+    }
+    if (!activityData.duration) {
+      errors.duration = "duration is required";
+    }
+    if (!activityData.date) {
+      errors.date = "date and time is required";
+    } else if (message) {
+      errors.date = message;
+    }
+    return errors;
   };
   return (
     <div className="activity__container">
@@ -66,6 +94,9 @@ export default function Activity() {
               );
             })}
           </select>
+          {activityErrors.activityType && (
+            <p style={{ color: "red" }}>{activityErrors.activityType}</p>
+          )}
           <input
             type="text"
             name="description"
@@ -74,6 +105,9 @@ export default function Activity() {
             maxLength={64}
             onChange={handleChange}
           />
+          {activityErrors.description && (
+            <p style={{ color: "red" }}>{activityErrors.description}</p>
+          )}
           <input
             type="number"
             name="duration"
@@ -83,7 +117,7 @@ export default function Activity() {
             max={500}
             onChange={handleChange}
           />
-
+          
           <input
             type="datetime-local"
             name="date"
@@ -91,11 +125,12 @@ export default function Activity() {
             onChange={handleChange}
             min={new Date().toISOString().slice(0, 16)}
           />
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          {isLoading && <PulseLoader />}
+          {error && <p style={{color:"red"}}>{error}</p>}
+          {isLoading && <PulseLoader/>}
           <input type="submit" value={"Create"} />
         </form>
       </div>
     </div>
   );
 }
+
