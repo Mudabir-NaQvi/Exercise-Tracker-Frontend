@@ -3,6 +3,8 @@ import "./Register.css";
 import registerImage from "../images/register.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { PulseLoader } from "react-spinners";
 export default function Register() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -12,7 +14,15 @@ export default function Register() {
     password: "",
   });
   const [formErrors, setFormErrors] = useState({});
-  
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, []);
+
   const handleChange = (e) => {
     setUserData((prevUserData) => ({
       ...prevUserData,
@@ -22,7 +32,7 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userData);
+    setIsLoading(true);
     setFormErrors(validate(userData));
     if (Object.keys(validate(userData)).length === 0) {
       try {
@@ -35,7 +45,11 @@ export default function Register() {
         let message = "Email already exists";
         setFormErrors(validate(userData, message));
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
+    } else {
+      setIsLoading(false);
     }
   };
 
@@ -66,9 +80,9 @@ export default function Register() {
     // password validation
     if (!formData.password) {
       errors.password = "password is required";
-    } else if ((userData.password).length < 3) {
+    } else if (userData.password.length < 3) {
       errors.password = "password must be more than or equal to 3 characters";
-    } else if ((userData.password).length >= 12) {
+    } else if (userData.password.length >= 12) {
       errors.password = "password cannot be more than 12 characters";
     }
 
@@ -81,54 +95,58 @@ export default function Register() {
       </div>
       <div className="register__containerRight">
         <h2>Register</h2>
-        <form className="register__form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            onChange={handleChange}
-          />
-          {formErrors.firstName && (
-            <p style={{ color: "red" }}>{formErrors.firstName}</p>
-          )}
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last name"
-            onChange={handleChange}
-          />
-          {formErrors.lastName && (
-            <p style={{ color: "red" }}>{formErrors.lastName}</p>
-          )}
+        {isLoading ? (
+          <PulseLoader />
+        ) : (
+          <form className="register__form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              onChange={handleChange}
+            />
+            {formErrors.firstName && (
+              <p style={{ color: "red" }}>{formErrors.firstName}</p>
+            )}
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last name"
+              onChange={handleChange}
+            />
+            {formErrors.lastName && (
+              <p style={{ color: "red" }}>{formErrors.lastName}</p>
+            )}
 
-          <input
-            type="text"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-          />
-          {formErrors.email && (
-            <p style={{ color: "red" }}>{formErrors.email}</p>
-          )}
-          {formErrors.message && (
-            <p style={{ color: "red" }}>{formErrors.message}</p>
-          )}
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+            />
+            {formErrors.email && (
+              <p style={{ color: "red" }}>{formErrors.email}</p>
+            )}
+            {formErrors.message && (
+              <p style={{ color: "red" }}>{formErrors.message}</p>
+            )}
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-          />
-          {formErrors.password && (
-            <p style={{ color: "red" }}>{formErrors.password}</p>
-          )}
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+            />
+            {formErrors.password && (
+              <p style={{ color: "red" }}>{formErrors.password}</p>
+            )}
 
-          <input type="submit" value="Submit" />
-          <p>
-            Already have an account? <Link to="/login">login</Link>
-          </p>
-        </form>
+            <input type="submit" value="Submit" />
+            <p>
+              Already have an account? <Link to="/login">login</Link>
+            </p>
+          </form>
+        )}
       </div>
     </div>
   );

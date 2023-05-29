@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import Activity from "../Activity/Activity";
 import Details from "../Details/Details";
 import EditActivity from "../Activity/EditActivity";
+import NotFound from "../Not Found/NotFound";
 export default function Router() {
   return (
     <div>
@@ -37,7 +38,7 @@ export default function Router() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/edit" element={<EditActivity />} />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </div>
   );

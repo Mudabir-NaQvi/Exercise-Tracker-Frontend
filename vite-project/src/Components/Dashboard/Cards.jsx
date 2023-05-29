@@ -40,6 +40,7 @@ const Cards = () => {
                 recentActivity={recentActivity}
                 index={index}
                 images={images}
+                className="card"
               />
             </Link>
           );

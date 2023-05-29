@@ -27,12 +27,14 @@ function DeleteModal({ setIsShow, setShouldReload, id }) {
   };
   return (
     <div className="modal__container">
+      <div className="modal">
       <h1>Warning</h1>
       {isLoading && <PulseLoader />}
       <p>Are you sure! Do you want to delete it?</p>
       <div className="buttons">
       <button onClick={handleDelete} className="delete__btn">Delete</button>
       <button onClick={handleCancel} className="cancel__btn">Cancel</button>
+      </div>
       </div>
     </div>
   );

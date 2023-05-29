@@ -65,15 +65,18 @@ function Details() {
           alt="hiking"
         />
         <div className="detail__cards">
-          {activityLogs.map((activityLog, index) => {
-            return (
-              <CardDetails
-                activityLog={activityLog}
-                key={index}
-                setShouldReload={setShouldReload}
-              />
-            );
-          })}
+          {/* {console.log()} */}
+          {activityLogs.length !== 0
+            ? activityLogs.map((activityLog, index) => {
+                return (
+                  <CardDetails
+                    activityLog={activityLog}
+                    key={index}
+                    setShouldReload={setShouldReload}
+                  />
+                );
+              })
+            : <h2 style={{padding:"10px"}}>Activity Log is Empty</h2>}
         </div>
         {isLoading && <PulseLoader />}
       </div>

@@ -7,11 +7,12 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
-
+import moment from 'moment'
 
 export default function Activity() {
   const [activityData, setActivityData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const activityTypes = useSelector((state) => state.activities.activities);
   const navigate = useNavigate();
   const handleBackButton = () => {
@@ -42,6 +43,7 @@ export default function Activity() {
       );
       navigate('/dashboard');
     } catch (error) {
+      setError("Cannot set previous date and time")
       console.log(error);
     }finally{
       setIsLoading(false);
@@ -61,7 +63,7 @@ export default function Activity() {
         />
         <h2>Activity</h2>
         <form className="activity__form" onSubmit={handleSubmit}>
-          <select onChange={handleChange} name="activityType">
+          <select onChange={handleChange} name="activityType" required>
             <option disabled selected>
               Select Activity Type
             </option>
@@ -82,26 +84,23 @@ export default function Activity() {
             onChange={handleChange}
             />
           <input
-            type="text"
+            type="number"
             name="duration"
             placeholder="Duration in minutes"
             required
-            maxLength={3}
+            min={1}
+            max={500}
             onChange={handleChange}
           />
+          
           <input
-            type="date"
+            type="datetime-local"
             name="date"
             placeholder="Date"
             onChange={handleChange}
-            min={new Date()
-              .toLocaleDateString("ja-JP", {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-              })
-              .replace(/\//g, "-")}
+             min={new Date().toISOString().slice(0, 16)}
           />
+          {error && <p style={{color:"red"}}>{error}</p>}
           {isLoading && <PulseLoader/>}
           <input type="submit" value={"Create"} />
         </form>

@@ -17,6 +17,7 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
     navigate(`${activityLog._id}`);
   };
 
+  console.log(activityLog);
   return (
     <div className="details__cardContainer">
       {isShow && (
@@ -30,6 +31,7 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
       <div className="details__cardTop">
         <div className="details__date">
           <p className="date">{new Date(activityLog.date).toDateString()}</p>
+          <p className="time">{new Date(activityLog.date).toLocaleTimeString()}</p>
         </div>
         <div className="detail__actions">
           <EditIcon
