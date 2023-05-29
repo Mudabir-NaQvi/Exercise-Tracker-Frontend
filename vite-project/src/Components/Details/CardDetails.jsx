@@ -7,11 +7,10 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
-
+import DeleteModal from "./DeleteModal";
 
 const CardDetails = ({ activityLog, setShouldReload }) => {
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isShow, setIsShow] = useState(false);
   const navigate = useNavigate();
   const handleEdit = (e) => {
     navigate(`${activityLog._id}`);
@@ -31,7 +30,9 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
       <div className="details__cardTop">
         <div className="details__date">
           <p className="date">{new Date(activityLog.date).toDateString()}</p>
-          <p className="time">{new Date(activityLog.date).toLocaleTimeString()}</p>
+          <p className="time">
+            {new Date(activityLog.date).toLocaleTimeString()}
+          </p>
         </div>
         <div className="detail__actions">
           <EditIcon
