@@ -4,7 +4,7 @@ import loginImage from "../images/login.png";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 import { useSelector } from "react-redux";
-import axios from "axios";
+import axios from "../../api/axios";
 import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
 import moment from "moment";
