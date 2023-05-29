@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./LandingPage.css";
 import landingBgImage from "../images/landingBG.png";
 import landingCharacterImage from "../images/landingCharacter.png";
 import logoImage from "../images/logo.png";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function LandingPage() {
+  const token = Cookies.get("token");
+
   return (
     <div className="landing__container">
       {/* individual container for all background images to set them behind */}
@@ -23,7 +26,9 @@ export default function LandingPage() {
         <header className="landing__header">
           <img src={logoImage} className="landing__logoImage" alt="logo" />
           <Link to="/login">
-            <button className="landing__loginBtn">Login</button>
+            <button className="landing__loginBtn">
+              {token ? "Dashboard" : "Login"}
+            </button>
           </Link>
         </header>
         {/* body section */}

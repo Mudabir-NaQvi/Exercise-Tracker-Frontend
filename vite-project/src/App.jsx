@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Router from "./Components/Router/Router";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { setUsers } from "./features/userSlice";
 export default function App() {
-      //why dependency
-
+  //why dependency
   return (
     <div>
       <Router />

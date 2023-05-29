@@ -7,37 +7,25 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import DeleteModal from "./DeleteModal";
 
 const CardDetails = ({ activityLog, setShouldReload }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isShow, setIsShow] = useState(false);
   const navigate = useNavigate();
   const handleEdit = (e) => {
-    console.log(activityLog._id);
-    navigate(`create-activity/${activityLog._id}`);
-  };
-
-  const handleDelete = async () => {
-    try {
-      setIsLoading(true);
-      setShouldReload("random value just to make the component rerender");
-      await axios.delete(
-        `http://localhost:5000/api/v1/activity/${activityLog._id}`,
-        {
-          headers: {
-            Authorization: Cookies.get("token"),
-          },
-        }
-      );
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setIsLoading(false);
-    }
+    navigate(`${activityLog._id}`);
   };
 
   return (
     <div className="details__cardContainer">
-      {isLoading && <PulseLoader />}
+      {isShow && (
+        <DeleteModal
+          setIsShow={setIsShow}
+          setShouldReload={setShouldReload}
+          id={activityLog._id}
+        />
+      )}
+
       <div className="details__cardTop">
         <div className="details__date">
           <p className="date">{new Date(activityLog.date).toDateString()}</p>
@@ -50,10 +38,9 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
             className="details__action edit__icon"
             onClick={handleEdit}
           />
-          <button> </button>
           <DeleteIcon
             className="details__action delete__icon"
-            onClick={handleDelete}
+            onClick={() => setIsShow(true)}
           />
         </div>
       </div>

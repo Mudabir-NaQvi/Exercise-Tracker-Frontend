@@ -1,0 +1,49 @@
+.modal__container{
+    position:fixed;
+   top:0;
+   left:0;
+   width:100%;
+   height:100%;
+   background:rgba(0,0,0,0.3);
+   backdrop-filter: blur(8px);
+   z-index:9999;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+}
+.modal{
+    padding:20px;
+    height:200px;
+   border-radius:10px;
+   border:1px solid lightgray;
+   box-shadow:1px 2px 3px rgba(0,0,0,0.6);
+   background:white;
+}
+
+.modal > h1{
+    padding-bottom:10px;
+    color:crimson;
+}
+.buttons{
+    padding-top:20px;
+}
+
+.buttons > button{
+    padding:10px 20px;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:1rem;
+}
+
+.delete__btn{
+    margin-right:10px;
+    background:crimson;
+    color:white;
+    border:1px solid lightgray;
+}
+
+.cancel__btn{
+    background:#eee;
+    border:1px solid lightgray;
+    
+}
