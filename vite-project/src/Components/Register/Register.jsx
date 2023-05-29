@@ -31,7 +31,7 @@ export default function Register() {
     setFormErrors(validate(userData));
     console.log("inside");
       try {
-        const response = await axios.post("http://localhost:5000/api/v1/auth/register", userData);
+        await axios.post("http://localhost:5000/api/v1/auth/register", userData);
         navigate('/login');        
       } catch (error) {
         let message = "Email already exists";
@@ -77,9 +77,11 @@ export default function Register() {
   };
   return (
     <div className="register__container">
+      {/* Left image container */}
       <div className="register__containerLeft">
         <img src={registerImage} alt="cycling man" />
       </div>
+      {/* Right form container */}
       <div className="register__containerRight">
         <h2>Register</h2>
         <form className="register__form" onSubmit={handleSubmit}>

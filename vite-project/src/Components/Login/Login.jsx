@@ -16,8 +16,10 @@ export default function Login() {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   useEffect(() => {
+    // getting token from browser cookie
     const token = Cookies.get("token");
     if (token) {
+      // if token exists navigate to dashboard
       navigate("/dashboard");
     }
   }, []);
@@ -30,16 +32,21 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // validate returns error object and set to formErrors object
     setFormErrors(validate(loginData));
     try {
+      // sending post request from login page to backend server
       const response = await axios.post(
         "http://localhost:5000/api/v1/auth/login",
         loginData
       );
+      // if response is received set current user to redux store
       dispatch(setCurrentUser(response.data.firstName));
+      // setting a cookie in browswer coming in response from backend
       Cookies.set("token", response.data.token, { samSite: "strict" });
       navigate("/dashboard");
     } catch (error) {
+      // if request fails set an error message in formErrors object
       const message = "Email or password is incorrect";
       setFormErrors(validate(loginData, message));
       console.log(error);
@@ -52,7 +59,6 @@ export default function Login() {
     if (!loginData.email) {
       errors.email = "Email is required";
     }
-
     if (!loginData.password) {
       errors.password = "Password is required";
     }
