@@ -30,26 +30,23 @@ export default function Activity() {
     e.preventDefault();
     setActivityErrors(validate(activityData));
     console.log(activityData);
-    if (Object.keys(validate(activityData)).length === 0) {
-      try {
-        setIsLoading(true);
-        await axios.post(
-          `http://localhost:5000/api/v1/activity/create`,
-          activityData,
-          {
-            headers: {
-              Authorization: Cookies.get("token"),
-            },
-          }
-        );
-        navigate("/dashboard");
-      } catch (error) {
-        const message = "Cannot set previous date and time";
-        setActivityErrors(activityData, message);
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        `http://localhost:5000/api/v1/activity/create`,
+        activityData,
+        {
+          headers: {
+            Authorization: Cookies.get("token"),
+          },
+        }
+      );
+      navigate('/dashboard');
+    } catch (error) {
+      setError("Cannot set previous date and time")
+      console.log(error);
+    }finally{
+      setIsLoading(false);
     }
   };
 
@@ -120,10 +117,7 @@ export default function Activity() {
             max={500}
             onChange={handleChange}
           />
-          {activityErrors.duration && (
-            <p style={{ color: "red" }}>{activityErrors.duration}</p>
-          )}
-
+          
           <input
             type="datetime-local"
             name="date"
@@ -131,11 +125,8 @@ export default function Activity() {
             onChange={handleChange}
             min={new Date().toISOString().slice(0, 16)}
           />
-          {activityErrors.date && (
-            <p style={{ color: "red" }}>{activityErrors.date}</p>
-          )}
-
-          {isLoading && <PulseLoader />}
+          {error && <p style={{color:"red"}}>{error}</p>}
+          {isLoading && <PulseLoader/>}
           <input type="submit" value={"Create"} />
         </form>
       </div>

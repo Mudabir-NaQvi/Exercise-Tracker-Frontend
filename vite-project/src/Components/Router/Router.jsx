@@ -11,7 +11,16 @@ import Activity from "../Activity/Activity";
 import Details from "../Details/Details";
 import EditActivity from "../Activity/EditActivity";
 import NotFound from "../Not Found/NotFound";
+
 export default function Router() {
+  const navigate = useNavigate();
+  const token = Cookies.get("token");
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token]);
+
   return (
     <div>
       <Routes>
@@ -38,7 +47,7 @@ export default function Router() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="*" element={<NotFound/>}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
