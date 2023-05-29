@@ -7,7 +7,8 @@ import { useSelector } from "react-redux";
 import axios from "../../api/axios";
 import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
-import moment from "moment";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Activity() {
   const [activityData, setActivityData] = useState({});
@@ -29,24 +30,49 @@ export default function Activity() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setActivityErrors(validate(activityData));
-    console.log(activityData);
-    try {
-      setIsLoading(true);
-      const response = await axios.post(
-        `http://localhost:5000/api/v1/activity/create`,
-        activityData,
-        {
-          headers: {
-            Authorization: Cookies.get("token"),
-          },
-        }
-      );
-      navigate('/dashboard');
-    } catch (error) {
-      setError("Cannot set previous date and time")
-      console.log(error);
-    }finally{
-      setIsLoading(false);
+    if (Object.keys(validate(activityData)).length === 0) {
+      try {
+        setIsLoading(true);
+        await axios.post("activity/create", activityData);
+        toast.success("Created successfully !", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        // navigate("/dashboard");
+      } catch (error) {
+        const message = "Cannot set previous date and time"
+        setActivityErrors(validate(activityData, message));
+        console.log(error);
+        toast.error("Cannot create!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    } else {
+      toast.error("Please fill out all the required fields!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 
@@ -117,20 +143,36 @@ export default function Activity() {
             max={500}
             onChange={handleChange}
           />
-          
+
           <input
             type="datetime-local"
             name="date"
             placeholder="Date"
             onChange={handleChange}
             min={new Date().toISOString().slice(0, 16)}
+            max={new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+              .toISOString()
+              .slice(0, 16)}
           />
-          {error && <p style={{color:"red"}}>{error}</p>}
-          {isLoading && <PulseLoader/>}
+          {activityErrors.date && (
+            <p style={{ color: "red" }}>{activityErrors.date}</p>
+          )}
+          {isLoading && <PulseLoader />}
           <input type="submit" value={"Create"} />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
         </form>
       </div>
     </div>
   );
 }
-

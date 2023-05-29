@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { PulseLoader } from "react-spinners";
@@ -10,11 +10,7 @@ function DeleteModal({ setIsShow, setShouldReload, id }) {
     try {
       setIsLoading(true);
       setShouldReload("random value just to make the component rerender");
-      await axios.delete(`http://localhost:5000/api/v1/activity/${id}`, {
-        headers: {
-          Authorization: Cookies.get("token"),
-        },
-      });
+      await axios.delete(`activity/${id}`);
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -28,13 +24,17 @@ function DeleteModal({ setIsShow, setShouldReload, id }) {
   return (
     <div className="modal__container">
       <div className="modal">
-      <h1>Warning</h1>
-      {isLoading && <PulseLoader />}
-      <p>Are you sure! Do you want to delete it?</p>
-      <div className="buttons">
-      <button onClick={handleDelete} className="delete__btn">Delete</button>
-      <button onClick={handleCancel} className="cancel__btn">Cancel</button>
-      </div>
+        <h1>Warning</h1>
+        {isLoading && <PulseLoader />}
+        <p>Are you sure! Do you want to delete it?</p>
+        <div className="buttons">
+          <button onClick={handleDelete} className="delete__btn">
+            Delete
+          </button>
+          <button onClick={handleCancel} className="cancel__btn">
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

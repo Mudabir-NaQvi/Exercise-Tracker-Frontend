@@ -4,10 +4,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 import "./EditActivity.css";
 import { useSelector } from "react-redux";
-import axios from "axios";
+import axios from "../../api/axios";
 import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
 import moment from "moment";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 moment.duration();
 const EditActivity = () => {
@@ -26,14 +28,7 @@ const EditActivity = () => {
       try {
         setIsLoading(true);
         // get specific activity
-        const response = await axios.get(
-          `http://localhost:5000/api/v1/activity/${id}`,
-          {
-            headers: {
-              Authorization: Cookies.get("token"),
-            },
-          }
-        );
+        const response = await axios.get(`activity/${id}`);
         const data = await response.data;
         setActivityData(data);
       } catch (error) {
@@ -71,23 +66,49 @@ const EditActivity = () => {
     if (Object.keys(validate(activityData)).length === 0) {
       try {
         setIsLoading(true);
-        await axios.put(
-          `http://localhost:5000/api/v1/activity/${id}`,
-          { ...activityData, duration: getDuration() },
-          {
-            headers: {
-              Authorization: Cookies.get("token"),
-            },
-          }
-        );
-        navigate("/dashboard");
+        await axios.put(`/activity/${id}`, {
+          ...activityData,
+          duration: getDuration(),
+        });
+        toast.success("Updated successfully !", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        // navigate("/dashboard");
       } catch (error) {
         const message = "Cannot set previous date and time";
-        setActivityErrors(activityData, message);
+        setActivityErrors(validate(activityData, message));
         console.log(error);
+        toast.error("Cannot Update!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       } finally {
         setIsLoading(false);
       }
+    } else {
+      toast.error("Please fill out all the required fields!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 
@@ -96,9 +117,6 @@ const EditActivity = () => {
   const getDuration = () => {
     const duration = String(activityData.duration);
     const [hours, minutes] = duration.split(" ");
-    console.log(
-      typeof String(hours).replace("h", "") + +String(minutes).replace("m", "")
-    );
     const result = parseInt(
       String(hours).replace("h", "") + +String(minutes).replace("m", "")
     );
@@ -144,7 +162,8 @@ const EditActivity = () => {
               <select
                 defaultValue={activityData.activityType}
                 name="activityType"
-                onChange={handleChange}>
+                onChange={handleChange}
+              >
                 {activityTypes.map((activity, index) => {
                   return (
                     <option value={activity.activityType} key={index}>
@@ -192,6 +211,18 @@ const EditActivity = () => {
                 <p style={{ color: "red" }}>{activityErrors.date}</p>
               )}
               <input type="submit" value="Update" />
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+              />
             </form>
           )}
         </div>

@@ -16,7 +16,6 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
     navigate(`${activityLog._id}`);
   };
 
-  console.log(activityLog);
   return (
     <div className="details__cardContainer">
       {isShow && (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Login.css";
 import loginImage from "../images/login.png";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../api/axios";
 import Cookies from "js-cookie";
 import { setCurrentUser } from "../../features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,10 +33,7 @@ export default function Login() {
     setIsLoading(true);
     setFormErrors(validate(loginData));
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/auth/login",
-        loginData
-      );
+      const response = await axios.post("auth/login", loginData);
       dispatch(setCurrentUser(response.data.firstName));
       Cookies.set("token", response.data.token, { samSite: "strict" });
       navigate("/dashboard");

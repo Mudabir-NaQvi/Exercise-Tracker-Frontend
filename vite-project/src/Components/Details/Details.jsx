@@ -10,7 +10,7 @@ import Sidebar from "../Dashboard/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { setActivityLogs } from "../../features/activitySlice";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import axios from "../../api/axios";
 import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
 
@@ -33,12 +33,7 @@ function Details() {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `http://localhost:5000/api/v1/activity/by-type?activityType=${activityType.type}`,
-          {
-            headers: {
-              Authorization: Cookies.get("token"),
-            },
-          }
+          `activity/by-type?activityType=${activityType.type}`
         );
         const data = await response.data;
         dispatch(setActivityLogs(data));
@@ -66,17 +61,19 @@ function Details() {
         />
         <div className="detail__cards">
           {/* {console.log()} */}
-          {activityLogs.length !== 0
-            ? activityLogs.map((activityLog, index) => {
-                return (
-                  <CardDetails
-                    activityLog={activityLog}
-                    key={index}
-                    setShouldReload={setShouldReload}
-                  />
-                );
-              })
-            : <h2 style={{padding:"10px"}}>Activity Log is Empty</h2>}
+          {activityLogs.length !== 0 ? (
+            activityLogs.map((activityLog, index) => {
+              return (
+                <CardDetails
+                  activityLog={activityLog}
+                  key={index}
+                  setShouldReload={setShouldReload}
+                />
+              );
+            })
+          ) : (
+            <h2 style={{ padding: "10px" }}>Activity Log is Empty</h2>
+          )}
         </div>
         {isLoading && <PulseLoader />}
       </div>
