@@ -113,11 +113,13 @@ const EditActivity = () => {
                 placeholder="Description"
                 value={activityData.description}
                 required
+                maxLength={64}
                 onChange={handleChange}
               />
               <input
                 type="text"
                 name="duration"
+                maxLength={3}
                 placeholder="Duration in minutes"
                 value={activityData.duration}
                 onChange={handleChange}
@@ -137,7 +139,7 @@ const EditActivity = () => {
                   })
                   .replace(/\//g, "-")}
               />
-              <input type="submit" value="Create" />
+              <input type="submit" value="Update" />
             </form>
           )}
         </div>

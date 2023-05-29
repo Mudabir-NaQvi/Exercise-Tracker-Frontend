@@ -17,34 +17,19 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
     navigate(`${activityLog._id}`);
   };
 
-  const handleDelete = async () => {
-    try {
-      setIsLoading(true);
-      setShouldReload("random value just to make the component rerender");
-      await axios.delete(
-        `http://localhost:5000/api/v1/activity/${activityLog._id}`,
-        {
-          headers: {
-            Authorization: Cookies.get("token"),
-          },
-        }
-      );
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
     <div className="details__cardContainer">
-      {isLoading && <PulseLoader />}
+      {isShow && (
+        <DeleteModal
+          setIsShow={setIsShow}
+          setShouldReload={setShouldReload}
+          id={activityLog._id}
+        />
+      )}
+
       <div className="details__cardTop">
         <div className="details__date">
           <p className="date">{new Date(activityLog.date).toDateString()}</p>
-          <p className="time">
-            {new Date(activityLog.date).toLocaleTimeString()}
-          </p>
         </div>
         <div className="detail__actions">
           <EditIcon
@@ -53,7 +38,7 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
           />
           <DeleteIcon
             className="details__action delete__icon"
-            onClick={handleDelete}
+            onClick={() => setIsShow(true)}
           />
         </div>
       </div>

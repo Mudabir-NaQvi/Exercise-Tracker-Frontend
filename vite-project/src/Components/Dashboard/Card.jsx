@@ -19,9 +19,12 @@ export default function Card({ recentActivity, images, index }) {
     >
       <h2>{recentActivity.activityType}</h2>
       {recentActivity.lastDate && (
-        <p className="activity__date">
+          <div>
+            <p className="activity__date">
           {new Date(recentActivity.lastDate).toDateString()}
-        </p>
+         </p>
+         <p className="activity__count">{recentActivity.count}</p>
+          </div>
       )}
     </div>
   );

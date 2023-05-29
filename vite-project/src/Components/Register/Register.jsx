@@ -12,26 +12,21 @@ export default function Register() {
     password: "",
   });
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
-
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(userData);
-    }
-  }, [formErrors]);
+  
   const handleChange = (e) => {
     setUserData((prevUserData) => ({
       ...prevUserData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(userData);
     setFormErrors(validate(userData));
     if (Object.keys(validate(userData)).length === 0) {
       try {
-        const response = await axios.post(
+        await axios.post(
           "http://localhost:5000/api/v1/auth/register",
           userData
         );
@@ -71,9 +66,9 @@ export default function Register() {
     // password validation
     if (!formData.password) {
       errors.password = "password is required";
-    } else if (userData.password.length < 3) {
-      errors.password = "password must be more than 3 characters";
-    } else if (userData.password.length >= 12) {
+    } else if ((userData.password).length < 3) {
+      errors.password = "password must be more than or equal to 3 characters";
+    } else if ((userData.password).length >= 12) {
       errors.password = "password cannot be more than 12 characters";
     }
 
