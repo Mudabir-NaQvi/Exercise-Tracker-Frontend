@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
-import moment from 'moment'
+import moment from "moment";
 
 export default function Activity() {
   const [activityData, setActivityData] = useState({});
@@ -32,26 +32,17 @@ export default function Activity() {
     console.log(activityData);
     try {
       setIsLoading(true);
-      const response = await axios.post(
-        `http://localhost:5000/api/v1/activity/create`,
-        activityData,
-        {
-          headers: {
-            Authorization: Cookies.get("token"),
-          },
-        }
-      );
-      navigate('/dashboard');
+      await axios.post("activity/create", activityData);
+      navigate("/dashboard");
     } catch (error) {
-      setError("Cannot set previous date and time")
+      setError("Cannot set previous date and time");
       console.log(error);
-    }finally{
+    } finally {
       setIsLoading(false);
     }
   };
   return (
     <div className="activity__container">
-      
       <div className="activity__containerLeft">
         <img src={loginImage} alt="cycling man" />
       </div>
@@ -82,7 +73,7 @@ export default function Activity() {
             required
             maxLength={64}
             onChange={handleChange}
-            />
+          />
           <input
             type="number"
             name="duration"
@@ -92,16 +83,16 @@ export default function Activity() {
             max={500}
             onChange={handleChange}
           />
-          
+
           <input
             type="datetime-local"
             name="date"
             placeholder="Date"
             onChange={handleChange}
-             min={new Date().toISOString().slice(0, 16)}
+            min={new Date().toISOString().slice(0, 16)}
           />
-          {error && <p style={{color:"red"}}>{error}</p>}
-          {isLoading && <PulseLoader/>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          {isLoading && <PulseLoader />}
           <input type="submit" value={"Create"} />
         </form>
       </div>

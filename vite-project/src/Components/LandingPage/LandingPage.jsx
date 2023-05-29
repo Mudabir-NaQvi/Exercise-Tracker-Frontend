@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./LandingPage.css";
 import landingBgImage from "../images/landingBG.png";
 import landingCharacterImage from "../images/landingCharacter.png";
@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 
 export default function LandingPage() {
   const token = Cookies.get("token");
+
   return (
     <div className="landing__container">
       {/* individual container for all background images to set them behind */}
