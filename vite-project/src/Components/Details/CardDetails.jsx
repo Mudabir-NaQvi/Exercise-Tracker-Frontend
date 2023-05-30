@@ -13,7 +13,7 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
   const [isShow, setIsShow] = useState(false);
   const navigate = useNavigate();
   const handleEdit = (e) => {
-    navigate(`${activityLog._id}`);
+    navigate(`${activityLog.id}`);
   };
 
   return (
@@ -22,7 +22,7 @@ const CardDetails = ({ activityLog, setShouldReload }) => {
         <DeleteModal
           setIsShow={setIsShow}
           setShouldReload={setShouldReload}
-          id={activityLog._id}
+          id={activityLog.id}
         />
       )}
 

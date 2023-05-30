@@ -46,7 +46,7 @@ export default function Activity() {
         });
         // navigate("/dashboard");
       } catch (error) {
-        const message = "Cannot set previous date and time"
+        const message = "Cannot set previous date and time";
         setActivityErrors(validate(activityData, message));
         console.log(error);
         toast.error("Cannot create!", {
@@ -127,7 +127,6 @@ export default function Activity() {
             type="text"
             name="description"
             placeholder="Description"
-            required
             maxLength={64}
             onChange={handleChange}
           />
@@ -138,12 +137,13 @@ export default function Activity() {
             type="number"
             name="duration"
             placeholder="Duration in minutes"
-            required
             min={1}
             max={500}
             onChange={handleChange}
           />
-
+          {activityErrors.duration && (
+            <p style={{ color: "red" }}>{activityErrors.duration}</p>
+          )}
           <input
             type="datetime-local"
             name="date"

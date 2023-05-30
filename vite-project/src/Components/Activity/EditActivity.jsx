@@ -40,16 +40,7 @@ const EditActivity = () => {
     fetchActivity();
   }, []);
 
-  const getDate = () => {
-    const dt = new Date(activityData.date);
-    return dt
-      .toLocaleDateString("ja-JP", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      })
-      .replace(/\//g, "-");
-  };
+
 
   const handleChange = (e) => {
     setActivityData((prevActivityData) => ({
@@ -68,7 +59,7 @@ const EditActivity = () => {
         setIsLoading(true);
         await axios.put(`/activity/${id}`, {
           ...activityData,
-          duration: getDuration(),
+          duration: activityData.duration,
         });
         toast.success("Updated successfully !", {
           position: "top-right",
@@ -112,16 +103,7 @@ const EditActivity = () => {
     }
   };
 
-  // get duration in minutes from 3h 20m format
 
-  const getDuration = () => {
-    const duration = String(activityData.duration);
-    const [hours, minutes] = duration.split(" ");
-    const result = parseInt(
-      String(hours).replace("h", "") + +String(minutes).replace("m", "")
-    );
-    return result;
-  };
 
   const validate = (activityData, message = "") => {
     const errors = {};
@@ -192,7 +174,7 @@ const EditActivity = () => {
                 min={1}
                 max={500}
                 placeholder="Duration in minutes"
-                value={getDuration()}
+                value={activityData.duration}
                 onChange={handleChange}
               />
               {activityErrors.duration && (

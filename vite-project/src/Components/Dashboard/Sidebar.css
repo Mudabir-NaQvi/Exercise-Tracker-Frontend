@@ -1,82 +1,85 @@
 .dashboard__sidebar {
-    background: var(--bg-dark);
-    color: #fff;
-    height: 100vh;
-    flex: 0.2;
-    position: sticky;
-    top: 0;
-    max-width:300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding:20px 2px;
+  background: var(--bg-dark);
+  color: #fff;
+  height: 100vh;
+  flex: 0.2;
+  position: sticky;
+  top: 0;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 2px;
 }
 
-
 .dashboard__sidebarTop {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard__item {
-    display: flex;
-    align-items: center;
-    justify-content:flex-start;
-    background:#0e0e0e;
-    padding:10px;
-    margin:1px 0;
-    cursor:pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #0e0e0e;
+  padding: 10px;
+  margin: 1px 0;
+  cursor: pointer;
 }
 
-.dashboard__item:hover{
-    background:#000;
+.link__logout {
+  color: #fff;
+  text-decoration: none;
+}
+.dashboard__item:hover {
+  background: #000;
 }
 .link {
-    font-weight: lighter;
-    display: flex;
-        align-items: center;
+  font-weight: lighter;
+  display: flex;
+  align-items: center;
 }
 
-.link>p {
-    margin-left: 15px;
+.link > p {
+  margin-left: 15px;
 }
 .link__create,
 .link__home {
-    padding-left: 10px;
-    font-size: 1.1rem;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 1px;
+  padding-left: 10px;
+  font-size: 1.1rem;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1px;
 }
 
-@media only screen and (max-width:720px){
-    .link{
-        font-size:1rem;
-    }
+@media only screen and (max-width: 720px) {
+  .link {
+    font-size: 1rem;
+  }
 }
 
-@media only screen and (max-width:620px){
-    .link > p{  
-        display:none;
-    }
+@media only screen and (max-width: 620px) {
+  .link > p {
+    display: none;
+  }
 
-    .dashboard__item{
-        /* justify-content:center; */
-        align-items:center;
-    }
+  .dashboard__item {
+    /* justify-content:center; */
+    align-items: center;
+  }
 
-    .dashboard__sidebar{
-        flex:0.08;
-    }
+  .dashboard__sidebar {
+    flex: 0.08;
+  }
 }
 
-@media only screen and (max-width:490px){
-    .avatar__container{
-        flex-direction:column;
-        margin-top:20px;
-    }
+@media only screen and (max-width: 490px) {
+  .avatar__container {
+    flex-direction: column;
+    margin-top: 20px;
+  }
 
-    .username{
-        margin-top:5px;
-    }
+  .username {
+    margin-top: 5px;
+  }
 }
