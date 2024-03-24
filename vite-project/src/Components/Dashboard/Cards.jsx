@@ -26,11 +26,6 @@ const Cards = () => {
           <h3>Tracking Activity</h3>
           <p className="header__date">{new Date().toDateString()}</p>
         </div>
-        <div className="avatar__container">
-          <Avatar className="avatar" src={avatar} />
-          {/* <p className="username">{currentUser.firstName?currentUser.firstName:"Loading..."}</p> */}
-          <p className="username">{currentUser}</p>
-        </div>
       </div>
       <div className="dashboard__grid">
         {recentActivities.map((recentActivity, index) => {
