@@ -36,7 +36,7 @@ export default function Login() {
     setFormErrors(validate(loginData));
     try {
       const response = await axios.post("auth/login", loginData);
-      dispatch(setCurrentUser(response.data.firstName));
+      dispatch(setCurrentUser(response.data.user));
       // setting a cookie in browswer coming in response from backend
       Cookies.set("token", response.data.token, { samSite: "strict" });
       navigate("/dashboard");

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 
-import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../../api/axios";
 import { setAllActivities } from "../../features/activitySlice";
 import Cards from "./Cards";
-import Cookies from "js-cookie";
+import Sidebar from "./Sidebar";
 
 function Dashboard() {
   const dispatch = useDispatch();
