@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./Details.css";
-import Hiking from "../images/hiking.jpg";
-import Swimming from "../images/swimming-1.png";
-import Walking from "../images/walking.jpg";
-import Cycling from "../images/cycling.jpg";
 import Running from "../images/running-1.png";
+import Cycling from "../images/Cycle.jpg";
+import Swimming from "../images/Swim.jpg";
+import Hiking from "../images/Hike.jpg";
+import Walking from "../images/Walk.jpg";
+
 import CardDetails from "./CardDetails";
 import Sidebar from "../Dashboard/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { setActivityLogs } from "../../features/activitySlice";
 import { useParams } from "react-router-dom";
 import axios from "../../api/axios";
-import Cookies from "js-cookie";
 import { PulseLoader } from "react-spinners";
 
 function Details() {

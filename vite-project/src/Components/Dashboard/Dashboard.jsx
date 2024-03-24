@@ -28,7 +28,7 @@ function Dashboard() {
 
       <Sidebar />
       {/* main dashboard body */}
-      <div className="dashboard__main">
+      <div className="dashboard__main my-10">
         <Cards />
       </div>
     </div>
